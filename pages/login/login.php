@@ -52,7 +52,7 @@ include '../includes/security.php';
                                             <input type="checkbox" class="form-check-input" role="switch" id="flexSwitchCheckChecked" checked> Keep me signed in </label>
                                     </div>
 
-                                    <a href="#" class="auth-link text-black">Forgot password?</a>
+                                    <a href="forgetpw.php" class="auth-link text-black">Forgot password?</a>
                                 </div>
 
                             </form>
