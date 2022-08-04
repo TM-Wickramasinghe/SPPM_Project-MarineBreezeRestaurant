@@ -22,11 +22,11 @@ include '../includes/nav.php';
                     <div class="card-body">
 
                         <h4 class="card-title">FeedBacks</h4>
-                
-                            <div class="template-demo">
-                                <button type="submit" class="btn btn-dark" name="printbtn"onclick="window.print();">PRINT</button>
-                            </div>
-                        
+
+                        <div class="template-demo">
+                            <button type="submit" class="btn btn-dark" name="printbtn" onclick="window.print();">PRINT</button>
+                        </div>
+
                         <?php
 
                         $query = "SELECT * FROM feedback order by fID";
@@ -42,7 +42,6 @@ include '../includes/nav.php';
                                     <tr align="center">
                                         <br>
                                         <th>NAME</th>
-                                        <th>EMAIL</th>
                                         <th>FEEDBACK</th>
                                         <th>DELETE</th></br>
                                     </tr>
@@ -56,8 +55,7 @@ include '../includes/nav.php';
                                         <tbody>
                                             <tr align="center">
                                                 <td><?php echo $row['fName']; ?></td>
-                                                <td><?php echo $row['fEmail']; ?></td>
-                                                <td><?php echo $row['fMsg']; ?></td>
+                                                <td><?php echo $row['fComment']; ?></td>
 
                                                 <td align="center">
                                                     <form action="codefeedback.php" method="post">
