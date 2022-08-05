@@ -8,7 +8,7 @@
 	<title>Marine Breeze</title>
 	<meta content="" name="description">
 	<meta content="" name="keywords">
-	
+
 	<script src="sweetalert2.min.js"></script>
 	<link rel="stylesheet" href="sweetalert2.min.css">
 
@@ -33,11 +33,11 @@
 	<!-- Template Main CSS File -->
 	<link href="assets/css/style.css" rel="stylesheet">
 	<?php
-	include( 'config.php' );
+	include('config.php');
 	$sql = "SELECT * FROM `menu`";
-	$result = mysqli_query( $con, $sql );
-	if (isset($_POST['submit'])){
-		
+	$result = mysqli_query($con, $sql);
+	if (isset($_POST['submit'])) {
+
 		$rName = $_POST["name"];
 		$rEmail = $_POST["email"];
 		$rContactNumber = $_POST["contactNumber"];
@@ -45,33 +45,31 @@
 		$rTime = $_POST["time"];
 		$rNoOfPeople = $_POST["noOfPeople"];
 		$rMessage = $_POST["message"];
-		
-		
-		$sql = "INSERT INTO `reservation` (`rID`,`rName`, `rEmail`, `rContactNumber`, `rDate`, `rTime`, `rNoOfPeople`, `rMessage`) VALUES (NULL,'$rName', '$rEmail', '$rContactNumber', '$rDate', '$rTime', '$rNoOfPeople', '$rMessage');";
-		
 
-		
-		$result = mysqli_query($con,$sql);
-		
-		header("Location: index.php?booking=1");	
-		
+
+		$sql = "INSERT INTO `reservation` (`rID`,`rName`, `rEmail`, `rContactNumber`, `rDate`, `rTime`, `rNoOfPeople`, `rMessage`) VALUES (NULL,'$rName', '$rEmail', '$rContactNumber', '$rDate', '$rTime', '$rNoOfPeople', '$rMessage');";
+
+
+
+		$result = mysqli_query($con, $sql);
+
+		header("Location: index.php?booking=1");
 	}
-		
+
 	?>
 
 </head>
 
 <body>
 	<?php
-	
-	if (isset($_GET['booking'])){
-			echo "
+
+	if (isset($_GET['booking'])) {
+		echo "
 			<script>
 				alert('Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!');
 				location.href='index.php'
 			</script>
 		";
-		
 	}
 	?>
 	<!-- ======= Top Bar ======= -->
@@ -97,7 +95,9 @@
 	<header id="header" class="fixed-top d-flex align-items-cente">
 		<div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-			<a href="index.php"><h1 class="index.php">Marine Breeze</h1></a>
+			<a href="index.php">
+				<h1 class="index.php">Marine Breeze</h1>
+			</a>
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -240,67 +240,67 @@
 				</div>
 				<div class="row menu-container" data-aos="fade-up" data-aos-delay="200" style="margin-left: 150px">
 					<?php
-					if ( mysqli_num_rows( $result ) > 0 ) {
-						while ( $row = mysqli_fetch_assoc( $result ) ) {
-							?>
-					<div class="col-lg-12 menu-item filter-<?php echo $row['Category'];?>">
-						<div clas="row col-lg-12">
-							<div class="col-lg-3">
-								<img src="<?php echo $row['Picture'];?>" class="menu-img" alt="">
-							</div>
-							<div class="col-lg-9">
-								<div class="row">
-									<div class="col-lg-6">
-										<?php echo $row['Name'];?>
+					if (mysqli_num_rows($result) > 0) {
+						while ($row = mysqli_fetch_assoc($result)) {
+					?>
+							<div class="col-lg-12 menu-item filter-<?php echo $row['Category']; ?>">
+								<div clas="row col-lg-12">
+									<div class="col-lg-3">
+										<img src="<?php echo $row['Picture']; ?>" class="menu-img" alt="">
 									</div>
-									<div class="col-lg-2">
-										<?php
-										if ( $row[ 'PriceSmall' ] == 'N/A' ) {
-											echo( '' );
-										} else {
-											echo( 'S : Rs.' . $row[ 'PriceSmall' ] . ' /-' );
-										}
-										?>
+									<div class="col-lg-9">
+										<div class="row">
+											<div class="col-lg-6">
+												<?php echo $row['Name']; ?>
+											</div>
+											<div class="col-lg-2">
+												<?php
+												if ($row['PriceSmall'] == 'N/A') {
+													echo ('');
+												} else {
+													echo ('S : Rs.' . $row['PriceSmall'] . ' /-');
+												}
+												?>
 
-									</div>
-									<div class="col-lg-2">
-										<?php
-										if ( $row[ 'PriceMedium' ] == 'N/A' ) {
-											echo( '' );
-										} else {
-											echo( 'M : Rs.' . $row[ 'PriceMedium' ] . ' /-' );
-										}
-										?>
+											</div>
+											<div class="col-lg-2">
+												<?php
+												if ($row['PriceMedium'] == 'N/A') {
+													echo ('');
+												} else {
+													echo ('M : Rs.' . $row['PriceMedium'] . ' /-');
+												}
+												?>
 
-									</div>
-									<div class="col-lg-2">
-										<?php
-										if ( $row[ 'PriceLarge' ] == 'N/A' ) {
-											echo( '' );
-										} else {
-											echo( 'L : Rs.' . $row[ 'PriceLarge' ] . ' /-' );
-										}
-										?>
-									</div>
-									<div class="col-lg-10">
-										<?php echo $row['Description'];?>
-									</div>
-									<?php
-									if ( $row[ 'Availability' ] == 'Available' ) {
-										echo( '<div class="col-lg-2" style="color: aquamarine">' . $row[ 'Availability' ] . '
-										</div>' );
-									} else {
-										echo( '<div class="col-lg-2" style="color: red">' . $row[ 'Availability' ] . '
-										</div>' );
-									}
-									?>
+											</div>
+											<div class="col-lg-2">
+												<?php
+												if ($row['PriceLarge'] == 'N/A') {
+													echo ('');
+												} else {
+													echo ('L : Rs.' . $row['PriceLarge'] . ' /-');
+												}
+												?>
+											</div>
+											<div class="col-lg-10">
+												<?php echo $row['Description']; ?>
+											</div>
+											<?php
+											if ($row['Availability'] == 'Available') {
+												echo ('<div class="col-lg-2" style="color: aquamarine">' . $row['Availability'] . '
+										</div>');
+											} else {
+												echo ('<div class="col-lg-2" style="color: red">' . $row['Availability'] . '
+										</div>');
+											}
+											?>
 
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
 					<?php
-					}
+						}
 					}
 					//mysqli_close( $con );
 					?>
@@ -520,27 +520,27 @@
 				<form method="post" class="php-email-form" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-lg-4 col-md-6 form-group">
-							<input type="text" name="name" class="form-control" placeholder="Your Name"/>
+							<input type="text" name="name" class="form-control" placeholder="Your Name" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-							<input type="email" class="form-control" name="email" placeholder="Your Email"/>
+							<input type="email" class="form-control" name="email" placeholder="Your Email" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-							<input type="text" class="form-control" name="contactNumber" placeholder="Your Contact Number"/>
+							<input type="text" class="form-control" name="contactNumber" placeholder="Your Contact Number" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3">
-							<input type="date" name="date" class="form-control" placeholder="Date"/>
+							<input type="date" name="date" class="form-control" placeholder="Date" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3">
-							<input type="time" class="form-control" name="time" placeholder="Time"/>
+							<input type="time" class="form-control" name="time" placeholder="Time" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3">
-							<input type="number" class="form-control" name="noOfPeople" placeholder="No of people"/>
+							<input type="number" class="form-control" name="noOfPeople" placeholder="No of people" />
 
 						</div>
 					</div>
@@ -549,7 +549,7 @@
 
 					</div>
 
-					<div class="text-center"><input type="submit" name="submit" class="btn btn-primary mr-2" value="Book a Table" style="background-color: #A38212"/>
+					<div class="text-center"><input type="submit" name="submit" class="btn btn-primary mr-2" value="Book a Table" style="background-color: #A38212" />
 					</div>
 
 				</form>
@@ -574,32 +574,32 @@
 					<div class="swiper-wrapper">
 
 						<?php
-						include( 'config.php' );
+						include('config.php');
 						$sql2 = "SELECT * FROM `feedback`";
-						$result2 = mysqli_query( $con, $sql2 );
-						if ( mysqli_num_rows( $result2 ) > 0 ) {
-							while ( $row = mysqli_fetch_assoc( $result2 ) ) {
-								?>
+						$result2 = mysqli_query($con, $sql2);
+						if (mysqli_num_rows($result2) > 0) {
+							while ($row = mysqli_fetch_assoc($result2)) {
+						?>
 
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-									<?php echo $row['fComment'];?>
-									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-								<h3>
-									<?php echo $row['fName'];?>
-								</h3>
-								<div class="swiper-pagination"></div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
+								<div class="swiper-slide">
+									<div class="testimonial-item">
+										<p>
+											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
+											<?php echo $row['fComment']; ?>
+											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+										</p>
+										<h3>
+											<?php echo $row['fName']; ?>
+										</h3>
+										<div class="swiper-pagination"></div>
+									</div>
+								</div>
+								<!-- End testimonial item -->
 
 
 
 						<?php
-						}
+							}
 						}
 						//mysqli_close( $con );
 						?>
@@ -629,9 +629,9 @@
 					<div class="col-lg-3 col-md-4">
 						<div class="gallery-item">
 							<a href="assets/img/gallery/gallery-1.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
-              </a>
-						
+								<img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+							</a>
+
 
 
 						</div>
@@ -640,9 +640,9 @@
 					<div class="col-lg-3 col-md-4">
 						<div class="gallery-item">
 							<a href="assets/img/gallery/gallery-2.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
-              </a>
-						
+								<img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
+							</a>
+
 
 
 						</div>
@@ -651,9 +651,9 @@
 					<div class="col-lg-3 col-md-4">
 						<div class="gallery-item">
 							<a href="assets/img/gallery/gallery-3.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
-              </a>
-						
+								<img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
+							</a>
+
 
 
 						</div>
@@ -662,9 +662,9 @@
 					<div class="col-lg-3 col-md-4">
 						<div class="gallery-item">
 							<a href="assets/img/gallery/gallery-4.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
-              </a>
-						
+								<img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
+							</a>
+
 
 
 						</div>
@@ -673,9 +673,9 @@
 					<div class="col-lg-3 col-md-4">
 						<div class="gallery-item">
 							<a href="assets/img/gallery/gallery-5.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
-              </a>
-						
+								<img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
+							</a>
+
 
 
 						</div>
@@ -684,9 +684,9 @@
 					<div class="col-lg-3 col-md-4">
 						<div class="gallery-item">
 							<a href="assets/img/gallery/gallery-6.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
-              </a>
-						
+								<img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
+							</a>
+
 
 
 						</div>
@@ -695,9 +695,9 @@
 					<div class="col-lg-3 col-md-4">
 						<div class="gallery-item">
 							<a href="assets/img/gallery/gallery-7.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
-              </a>
-						
+								<img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
+							</a>
+
 
 
 						</div>
@@ -706,9 +706,9 @@
 					<div class="col-lg-3 col-md-4">
 						<div class="gallery-item">
 							<a href="assets/img/gallery/gallery-8.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
-              </a>
-						
+								<img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
+							</a>
+
 
 
 						</div>
@@ -774,7 +774,7 @@
 		<!-- End Chefs Section -->
 
 		<!-- ======= Contact Section ======= -->
-		<section id="contact" class="contact" >
+		<section id="contact" class="contact">
 			<div class="container" data-aos="fade-up">
 
 				<div class="section-title">
@@ -783,41 +783,43 @@
 				</div>
 			</div>
 
-			<div class="container" data-aos="fade-up"align="center">
+			<div class="container" data-aos="fade-up">
 
-				<div class="row mt-5" align="center">
+				<div class="row mt-5">
 
-					<center><div class="col-lg-4" align="center">
-						<div class="info">
-							<div class="address">
-								<i class="bi bi-geo-alt"></i>
-								<h4>Location:</h4>
-								<p>24, Galle Road, Kalutara.</p>
-							</div>
+					<center>
+						<div class="col-lg-4">
+							<div class="info">
+								<div class="address">
+									<i class="bi bi-geo-alt"></i>
+									<h4>Location:</h4>
+									<p>24, Galle Road, Kalutara.</p>
+								</div>
 
-							<div class="open-hours">
-								<i class="bi bi-clock"></i>
-								<h4>Open Hours:</h4>
-								<p>
-									Monday-Sunday:<br> 11:00 AM - 11:00 PM
-								</p>
-							</div>
+								<div class="open-hours">
+									<i class="bi bi-clock"></i>
+									<h4>Open Hours:</h4>
+									<p>
+										Monday-Sunday:<br> 11:00 AM - 11:00 PM
+									</p>
+								</div>
 
-							<div class="email">
-								<i class="bi bi-envelope"></i>
-								<h4>Email:</h4>
-								<p>marinebreeze.kal@gmail.com</p>
-							</div>
+								<div class="email">
+									<i class="bi bi-envelope"></i>
+									<h4>Email:</h4>
+									<p>marinebreeze.kal@gmail.com</p>
+								</div>
 
-							<div class="phone">
-								<i class="bi bi-phone"></i>
-								<h4>Call:</h4>
-								<p>+94 71 9984 540</p>
+								<div class="phone">
+									<i class="bi bi-phone"></i>
+									<h4>Call:</h4>
+									<p>+94 71 9984 540</p>
+								</div>
+
 							</div>
 
 						</div>
-
-					</div></center>
+					</center>
 
 				</div>
 
@@ -832,16 +834,14 @@
 
 	<div class="container">
 		<div class="copyright">
-
-		        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Marine Breeze
-            2022</span></div>
-		<br>
+			<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Marine Breeze
+				2022</span>
+		</div><br>
 		<div class="credits">
 			<!-- All the links in the footer should remain intact. -->
 			<!-- You can delete the links only if you purchased the pro version. -->
 			<!-- Licensing information: https://bootstrapmade.com/license/ -->
 			<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/restaurantly-restaurant-template/ -->
-			</a>
 		</div>
 	</div>
 	</footer>
