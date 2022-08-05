@@ -16,7 +16,7 @@
                 <span class="nav-link">Dashboard</span>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="../admin/admin.php" aria-expanded="false" aria-controls="ui-basic">
+                <a class="nav-link" href="../admin/admin.php">
                     <span class="menu-title">Admin Management</span>
                     <i class="icon-layers menu-icon"></i>
                 </a>
