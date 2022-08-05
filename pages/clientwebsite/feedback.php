@@ -13,7 +13,7 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<script src="jquery-3.3.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 	<!-- Vendor CSS Files -->
 	<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -26,21 +26,20 @@
 
 	<!-- Template Main CSS File -->
 	<link href="assets/css/style.css" rel="stylesheet">
-	
-	<?php 
-	include( 'config.php' );
-	if (isset($_POST['submit1']))
-	{
-		
+
+	<?php
+	include('config.php');
+	if (isset($_POST['submit1'])) {
+
 		$fName = $_POST["fname"];
 		$fComment = $_POST["feedback"];
-		
-		
-		$sql = "INSERT INTO `feedback` (`fID`,`fName`, `fComment`) VALUES (NULL,'$fName', '$fComment');";
-		
 
-		
-		$result = mysqli_query($con,$sql);
+
+		$sql = "INSERT INTO `feedback` (`fID`,`fName`, `fComment`) VALUES (NULL,'$fName', '$fComment');";
+
+
+
+		$result = mysqli_query($con, $sql);
 		echo '
 <script type="text/javascript">
 	$( document ).ready( function () {
@@ -56,10 +55,9 @@
 </script>
 		';
 		header("Location: index.php");
-		
 	}
-			
-		  ?>
+
+	?>
 
 </head>
 
@@ -87,7 +85,9 @@
 	<header id="header" class="fixed-top d-flex align-items-cente">
 		<div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-			<a href="index.php"><h1 class="index.php">Marine Breeze</h1></a>
+			<a href="index.php">
+				<h1 class="index.php">Marine Breeze</h1>
+			</a>
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -122,50 +122,51 @@
 	<!-- End Header -->
 
 	<!-- ======= Hero Section ======= -->
-	<section >
-			<div class="container" data-aos="fade-up">
-
-				
-				<div class="section-title" style="margin-top: 100px">
-					<h2>Feedback</h2>
-					<p>Share your feedback with us</p>
-				</div>
-				<form method="post" class="php-email-form" enctype="multipart/form-data" >
-					<div class="row">
-						<div class="col-lg-12  form-group" >
-							<input type="text" name="fname" class="form-control" placeholder="Your Name(Optional)" />
-
-						</div>
-					</div>
-					<div class="form-group mt-3">
-						<textarea class="form-control" name="feedback" rows="7" placeholder="Feedback"></textarea>
-
-					</div>
-					
-					<div class="text-center"><input type="submit" name="submit1" class="btn btn-primary mr-2" value="Send Feedback" style="background-color: #A38212; margin-top: 15px"/>
-					</div>
-
-				</form>
+	<section>
+		<div class="container" data-aos="fade-up">
 
 
-
-
-
+			<div class="section-title" style="margin-top: 100px">
+				<h2>Feedback</h2>
+				<p>Share your feedback with us</p>
 			</div>
+			<form method="post" class="php-email-form" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-lg-12  form-group">
+						<input type="text" name="fname" class="form-control" placeholder="Your Name(Optional)" />
+
+					</div>
+				</div>
+				<div class="form-group mt-3">
+					<textarea class="form-control" name="feedback" rows="7" placeholder="Feedback"></textarea>
+
+				</div>
+
+				<div class="text-center"><input type="submit" name="submit1" class="btn btn-primary mr-2" value="Send Feedback" style="background-color: #A38212; margin-top: 15px" />
+				</div>
+
+			</form>
+
+
+
+
+
+		</div>
 	</section>
 	<section id="contact" class="contact">
-			<div class="container" data-aos="fade-up">
+		<div class="container" data-aos="fade-up">
 
-				<div class="section-title">
-					<h2>Contact</h2>
-					<p>Contact Us</p>
-				</div>
+			<div class="section-title">
+				<h2>Contact</h2>
+				<p>Contact Us</p>
 			</div>
+		</div>
 
-			<div class="container" data-aos="fade-up">
+		<div class="container" data-aos="fade-up">
 
-				<div class="row mt-5">
+			<div class="row mt-5">
 
+				<center>
 					<div class="col-lg-4">
 						<div class="info">
 							<div class="address">
@@ -197,12 +198,13 @@
 						</div>
 
 					</div>
-
-				</div>
+				</center>
 
 			</div>
-		</section>
-		<!-- End Contact Section -->
+
+		</div>
+	</section>
+	<!-- End Contact Section -->
 
 	</main>
 	<!-- End #main -->
@@ -211,14 +213,14 @@
 
 	<div class="container">
 		<div class="copyright">
-			&copy; Copyright <strong><span>MarineBreezeRestaurant</span></strong>. All Rights Reserved
-		</div>
+			<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Marine Breeze
+				2022</span>
+		</div><br>
 		<div class="credits">
 			<!-- All the links in the footer should remain intact. -->
 			<!-- You can delete the links only if you purchased the pro version. -->
 			<!-- Licensing information: https://bootstrapmade.com/license/ -->
 			<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/restaurantly-restaurant-template/ -->
-			Designed by SPPM Group 13</a>
 		</div>
 	</div>
 	</footer>
