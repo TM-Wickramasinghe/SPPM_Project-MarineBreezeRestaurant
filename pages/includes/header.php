@@ -23,16 +23,16 @@
 <body>
     <div class="container-scroller">
         <!-- partial:../../partials/_navbar.html -->
-        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-            <div class="navbar-brand-wrapper d-flex align-items-center">
-            <a class="navbar-brand brand-logo" >
-            <img src="../../images/logo.jpg" alt="logo" class="logo-dark" />
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0  d-flex flex-row">
+            <div class="navbar-brand-fit d-flex align-items-center">
+            <a class="navbar-brand brand-logo  ml-3 " >
+            <img src="../../images/Logo.jpeg" alt="logo" class="logo-light rounded-circle align-items-center" width="100" height="100"/>
           </a>
             </div>
-            <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-                <h5 class="mb-0 font-weight-medium d-none d-lg-flex">WELCOME !!!</h5>
-                <ul class="navbar-nav navbar-nav-right ml-auto">
-                    <a class="dropdown-item" href="../login/logout.php"><i class="dropdown-item-icon icon-power text-primary"></i> Sign Out</a>
+            <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-2">
+                <h5 class="mb-0 font-weight-medium d-flex d-lg">WELCOME !!!</h5>
+                <ul class="navbar-nav navbar-nav-left ml-auto">
+                    <a class="dropdown-item" href="../login/logout.php"><i class="dropdown-item-icon icon-power text-primary mr-2"></i> Sign Out</a>
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span class="icon-menu"></span>
