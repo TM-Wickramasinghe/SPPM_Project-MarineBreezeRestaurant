@@ -6,3 +6,4 @@ todo:
 -implementing chatbot
 -clientsite website menu pic path
 -clientsidewebsite sweet alert
+-email 
