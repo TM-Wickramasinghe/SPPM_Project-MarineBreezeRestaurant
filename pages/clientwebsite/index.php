@@ -9,13 +9,18 @@
 	<meta content="" name="description">
 	<meta content="" name="keywords">
 
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="sweetalert2.min.js"></script>
 	<link rel="stylesheet" href="sweetalert2.min.css">
 
 	<!-- Favicons -->
 	<link href="assets/img/favicon.png" rel="icon">
 	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+	
+	<!--Sweat -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link rel="stylesheet" href="@sweetalert2/theme-dark/dark.css">
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<script src="jquery-3.3.1.min.js"></script>
@@ -52,7 +57,7 @@
 
 
 		$result = mysqli_query($con, $sql);
-
+		
 		header("Location: index.php?booking=1");
 	}
 
@@ -64,12 +69,19 @@
 	<?php
 
 	if (isset($_GET['booking'])) {
-		echo "
-			<script>
-				alert('Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!');
-				location.href='index.php'
-			</script>
-		";
+		//echo "<script>alert('Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!');
+		//		</script>";
+		echo '<script>Swal.fire({
+            title: "Your booking request was Successfully sent!",
+            text: "We will call back or send an Email to confirm your reservation.",
+			imageUrl: "../../images/logo.jpeg",
+  imageWidth: 400,
+  imageHeight: 200,
+  imageAlt: "Custom image",
+ 
+        }); </script>';
+		
+		
 	}
 	?>
 	<!-- ======= Top Bar ======= -->
@@ -520,41 +532,54 @@
 				<form method="post" class="php-email-form" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-lg-4 col-md-6 form-group">
-							<input type="text" name="name" class="form-control" placeholder="Your Name" />
+							<input type="text" name="name" class="form-control bg-light text-dark " placeholder="Your Name" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-							<input type="email" class="form-control" name="email" placeholder="Your Email" />
+							<input type="email" class="form-control bg-light text-dark" name="email" placeholder="Your Email" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-							<input type="text" class="form-control" name="contactNumber" placeholder="Your Contact Number" />
+							<input type="text" class="form-control bg-light text-dark" name="contactNumber" placeholder="Your Contact Number" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3">
-							<input type="date" name="date" class="form-control" placeholder="Date" />
+							<input type="date" name="date" class="form-control bg-light text-dark placeholder-wave" placeholder="Date" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3">
-							<input type="time" class="form-control" name="time" placeholder="Time" />
+							<input type="time" class="form-control bg-light text-dark" name="time" placeholder="Time" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3">
-							<input type="number" class="form-control" name="noOfPeople" placeholder="No of people" />
+							<input type="number" class="form-control bg-light text-dark" name="noOfPeople" placeholder="No of people" />
 
 						</div>
 					</div>
 					<div class="form-group mt-3">
-						<textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+						<textarea class="form-control bg-light text-dark" name="message" rows="5" placeholder="Message"></textarea>
 
 					</div>
 
-					<div class="text-center"><input type="submit" name="submit" class="btn btn-primary mr-2" value="Book a Table" style="background-color: #A38212" />
+					<div class="text-center"><input type="submit" name="submit" class="btn btn-primary mr-2" value="Book a Table" style="background-color: #A38212"  onClick="validateName()"/>
 					</div>
 
 				</form>
 
+<script type="text/javascript">
+function validateName(){  
+		var name=document.getElementsByName("name").value; 
 
+			if (name==null || name=="" ){  
+ 				alert "Not"
+				return false; 
+			}else{
+				return true;
+			}
+}
+	
+	
+</script>
 
 
 
@@ -862,5 +887,7 @@
 	<script src="assets/js/main.js"></script>
 
 </body>
+	
+	
 
 </html>
