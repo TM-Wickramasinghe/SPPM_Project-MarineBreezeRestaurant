@@ -13,8 +13,10 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<script src="jquery-3.3.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
+	
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link rel="stylesheet" href="@sweetalert2/theme-dark/dark.css">
 	<!-- Vendor CSS Files -->
 	<link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
 	<link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -40,29 +42,34 @@
 
 
 		$result = mysqli_query($con, $sql);
-		echo '
-<script type="text/javascript">
-	$( document ).ready( function () {
-
-		swal( {
-			position: "top-end",
-			type: "success",
-			title: "Your work has been saved",
-			showConfirmButton: false,
-			timer: 1500
-		} )
-	} );
-</script>
-		';
-		header("Location: index.php");
+		
+		header("Location: feedback.php?feed=1");
 	}
 
 	?>
+	
+	
 
 </head>
 
 <body>
+<?php
 
+	if (isset($_GET['feed'])) {
+		//echo "<script>alert('Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!');
+		//		</script>";
+		echo '<script>Swal.fire({
+            title: "Feedback Successfully sent !",
+            text: "Thank you!",
+            icon: "success",
+            button: "Ok",
+            timer: 5000
+        })
+				</script>";';
+		
+		
+	}
+	?>
 	<!-- ======= Top Bar ======= -->
 	<div id="topbar" class="d-flex align-items-center fixed-top">
 		<div class="container d-flex justify-content-center justify-content-md-between">
