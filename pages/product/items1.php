@@ -159,7 +159,7 @@ include '../includes/nav.php';
 
 
               <button type="submit" name="save_product" class="btn btn-primary mr-2">Submit</button>
-              <button class="btn btn-light">Cancel</button>
+              <button class="btn btn-light"><a href="items1.php">Cancel</a></button>
             </form>
 
           </div>
@@ -256,7 +256,7 @@ include '../includes/nav.php';
                     </div>
 
                     <button type="submit" name="update_btn" class="btn btn-primary mr-2">Update</button>
-                    <button class="btn btn-light"> <a href="admin.php">Cancel</a></button>
+                    <button class="btn btn-light"> <a href="items1.php">Cancel</a></button>
                   </form>
             <?php
             }
