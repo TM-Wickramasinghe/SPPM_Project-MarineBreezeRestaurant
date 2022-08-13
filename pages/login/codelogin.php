@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
                 $user = mysqli_fetch_assoc($query_run);
                 $_SESSION['name'] = $user['aName'];
                 $_SESSION['desig'] = $user['Designation'];
-                
+
                 if (mysqli_num_rows($query_run1) == 1) {
                     $_SESSION['status'] = "LogIn Successful!";
                     $_SESSION['status_code'] = "success";
@@ -44,7 +44,25 @@ if (isset($_POST['login'])) {
 
 //forget password
 
-if (isset($_POST['forget'])) {
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpmailer/src/Exception.php';
+require 'phpmailer/src/PHPMailer.php';
+require 'phpmailer/src/SMTP.php';
+
+if (isset($_POST["forget"])) {
+
+    $mail = new PHPMailer(true);
+
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'marinebreeze3@gmail.com'; // Your gmail
+    $mail->Password = 'uxuswdswirjdyzyh'; // Your gmail app password
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port = 465;
+
     $email = mysqli_real_escape_string($connection, $_POST['email1']);
 
     $query = "SELECT * FROM admin WHERE  aEmail='$email' ";
@@ -57,20 +75,24 @@ if (isset($_POST['forget'])) {
 
         if ($query_run1) {
             $subject = 'Marine Breeze Restaurant';
-            $message = "Password for your account is $query1";
-            $header = 'From:heartgame.hg@gmail.com';
-            $retval = mail($email, $subject, $message, $header);
-            if ($retval == true) {
-                $_SESSION['status'] = "Email sent successfully!";
-                $_SESSION['status_code'] = "success";
-                header('Location: login.php');
-            } else {
-                $_SESSION['status'] = "Email could not be sent!";
-                $_SESSION['status_code'] = "error";
-                header('Location: forgetpw.php');
-            }
+            $message = "Password for your account is " . $query1;
+
+            $mail->setFrom('marinebreeze3@gmail.com'); // Your gmail
+
+            $mail->addAddress($email);
+
+            $mail->isHTML(true);
+
+            $mail->Subject = $subject;
+            $mail->Body = $message;
+
+            $mail->send();
+
+            $_SESSION['status'] = "Email sent successfully!";
+            $_SESSION['status_code'] = "success";
+            header('Location: login.php');
         } else {
-            $_SESSION['status'] = "Something went wrong!";
+            $_SESSION['status'] = "Email could not be sent!";
             $_SESSION['status_code'] = "error";
             header('Location: forgetpw.php');
         }
