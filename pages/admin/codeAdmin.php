@@ -55,11 +55,11 @@ if (isset($_POST['addbtn'])) {
                         $query_run = mysqli_query($connection, $query);
 
                         if ($query_run) {
-                            $_SESSION['status'] = "Registration Success!!!";
+                            $_SESSION['status'] = "Employee Added Successfully!!!";
                             $_SESSION['status_code'] = "success";
                             header('Location: admin.php');
                         } else {
-                            $_SESSION['status'] = "Registration Failed";
+                            $_SESSION['status'] = "Employee Adding Failed";
                             $_SESSION['status_code'] = "error";
                             header('Location: admin.php');
                         }
