@@ -42,7 +42,6 @@ include '../includes/nav.php';
                                         <th>ADMIN ID</th>
                                         <th>NAME</th>
                                         <th>EMAIL</th>
-                                        <th>PASSWORD</th>
                                         <th>DESIGNATION</th>
                                         <th>EDIT</th>
                                         <th>DELETE</th></br>
@@ -59,7 +58,6 @@ include '../includes/nav.php';
                                                 <td><?php echo $row['aID']; ?></td>
                                                 <td><?php echo $row['aName']; ?></td>
                                                 <td><?php echo $row['aEmail']; ?></td>
-                                                <td><?php echo $row['aPwd']; ?></td>
                                                 <td><?php echo $row['Designation']; ?></td>
 
                                                 <td align="center">
@@ -174,7 +172,7 @@ include '../includes/nav.php';
                                 <div class="card-body">
                                     <h4 class="card-title">Update Details</h4>
                                     <form action="codeAdmin.php" method="POST" class="forms-sample">
-                                        <div class="mt-10" align="left">
+                                        <div class="mt-10" align="center">
                                             <div class="form-group row">
                                                 <label for="id" class="col-sm-3 col-form-label">Admin ID</label>
                                                 <div class="col-sm-9">
@@ -204,9 +202,9 @@ include '../includes/nav.php';
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" name="edit_desig" placeholder="Designation" readonly value="<?php echo $row['Designation'] ?>">
                                                 </div>
-                                            </div>
-                                            <button type="submit" name="edit_" class="btn btn-primary mr-2">Update</button>
-                                            <button class="btn btn-light"> <a href="admin.php">Cancel</a></button>
+                                            </div align="center">
+                                            <button type="submit" name="edit_" class="btn btn-primary mr-2" align="center">Update</button>
+                                            <button class="btn btn-light"> <a href="admin.php" align="center">Cancel</a></button>
                                     </form>
                         <?php
                         }
