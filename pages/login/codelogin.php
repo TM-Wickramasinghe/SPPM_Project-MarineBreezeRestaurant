@@ -11,13 +11,19 @@ if (isset($_POST['login'])) {
 
     $query1 = "SELECT * FROM admin WHERE  Designation ='$desig' AND aEmail='$email' ";
     $query_run1 = mysqli_query($connection, $query1);
+
     if (!$query_run1) {
         echo $connection->error;
         exit;
     } else {
+
         if ($query_run || $query_run1) {
 
             if (mysqli_num_rows($query_run) == 1) {
+                $user = mysqli_fetch_assoc($query_run);
+                $_SESSION['name'] = $user['aName'];
+                $_SESSION['desig'] = $user['Designation'];
+                
                 if (mysqli_num_rows($query_run1) == 1) {
                     $_SESSION['status'] = "LogIn Successful!";
                     $_SESSION['status_code'] = "success";
