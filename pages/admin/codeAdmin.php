@@ -80,22 +80,37 @@ if (isset($_POST['edit_'])) {
     $id = $_POST['edit_aid'];
     $email = $_POST['edit_email'];
 
-    $query = "UPDATE admin SET  aEmail='$email' WHERE aID='$id' ";
-
-    $query_run = mysqli_query($connection, $query);
-
-    if (!$query_run) {
-        echo $connection->error;
-        exit;
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['status'] = "Invalid format and please re-enter valid email!";
+        $_SESSION['status_code'] = "error";
+        header('Location: admin.php');
     } else {
-        if ($query_run) {
-            $_SESSION['status'] = "Your Data is Updated";
-            $_SESSION['status_code'] = "success";
-            header('Location: admin.php');
-        } else {
-            $_SESSION['status'] = "Your Data is NOT Updated";
+        //email already taken or not
+        $email_query = "SELECT * FROM admin WHERE 'aEmail'=$email";
+        $email_query_run = mysqli_query($connection, $email_query);
+        if (mysqli_num_rows($email_query_run) > 0) {
+            $_SESSION['status'] = "Email Already Taken!";
             $_SESSION['status_code'] = "error";
             header('Location: admin.php');
+        } else {
+
+            $query = "UPDATE admin SET  aEmail='$email' WHERE aID='$id' ";
+            $query_run = mysqli_query($connection, $query);
+
+            if (!$query_run) {
+                echo $connection->error;
+                exit;
+            } else {
+                if ($query_run) {
+                    $_SESSION['status'] = "Your Data is Updated";
+                    $_SESSION['status_code'] = "success";
+                    header('Location: admin.php');
+                } else {
+                    $_SESSION['status'] = "Your Data is NOT Updated";
+                    $_SESSION['status_code'] = "error";
+                    header('Location: admin.php');
+                }
+            }
         }
     }
 }
