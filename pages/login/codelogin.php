@@ -58,8 +58,8 @@ if (isset($_POST["forget"])) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'marinebreeze3@gmail.com'; // Your gmail
-    $mail->Password = 'uxuswdswirjdyzyh'; // Your gmail app password
+    $mail->Username = 'marinebreeze3@gmail.com';
+    $mail->Password = 'uxuswdswirjdyzyh';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
 
@@ -68,16 +68,20 @@ if (isset($_POST["forget"])) {
     $query = "SELECT * FROM admin WHERE  aEmail='$email' ";
     $query_run = mysqli_query($connection, $query);
 
+
     if (mysqli_num_rows($query_run) > 0) {
 
         $query1 = "SELECT aPwd FROM admin WHERE  aEmail='$email' ";
         $query_run1 = mysqli_query($connection, $query1);
 
+        $user = mysqli_fetch_assoc($query_run);
+        $pwd = $user['aPwd'];
+
         if ($query_run1) {
             $subject = 'Marine Breeze Restaurant';
-            $message = "Password for your account is " . $query1;
+            $message = "Password for your account is " . $pwd;
 
-            $mail->setFrom('marinebreeze3@gmail.com'); // Your gmail
+            $mail->setFrom('marinebreeze3@gmail.com');
 
             $mail->addAddress($email);
 
