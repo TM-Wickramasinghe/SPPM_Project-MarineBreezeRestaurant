@@ -71,13 +71,10 @@ if (isset($_POST["forget"])) {
 
     if (mysqli_num_rows($query_run) > 0) {
 
-        $query1 = "SELECT aPwd FROM admin WHERE  aEmail='$email' ";
-        $query_run1 = mysqli_query($connection, $query1);
-
         $user = mysqli_fetch_assoc($query_run);
         $pwd = $user['aPwd'];
 
-        if ($query_run1) {
+        if ($query_run) {
             $subject = 'Marine Breeze Restaurant';
             $message = "Password for your account is " . $pwd;
 
