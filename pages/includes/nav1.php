@@ -5,9 +5,13 @@
         <ul class="nav">
             <li class="nav-item nav-profile">
                 <a href="#" class="nav-link">
+                    <?php
+                    $name = $_SESSION['name'];
+                    $desig = $_SESSION['desig'];
+                    ?>
                     <div class="text-wrapper">
-                        <p class="profile-name"></p>
-                        <p class="designation"></p>
+                        <p class="profile-name"><?php echo $name ?></p>
+                        <p class="designation"><?php echo $desig ?></p>
                     </div>
 
                 </a>
