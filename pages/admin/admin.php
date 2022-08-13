@@ -140,7 +140,7 @@ include '../includes/nav.php';
                             </div>
 
 
-                            <button type="submit" name="addbtn" class="btn btn-primary mr-2">Submit</button>
+                            <button type="submit" name="addbtn" class="btn btn-primary mr-2">Add</button>
                             <button type="reset" name="resetbtn" class="btn btn-secondary mr-2">Reset</button>
                             <button class="btn btn-light"><a href="admin.php">Cancel</a></button>
                         </form>
@@ -204,6 +204,7 @@ include '../includes/nav.php';
                                                 </div>
                                             </div align="center">
                                             <button type="submit" name="edit_" class="btn btn-primary mr-2" align="center">Update</button>
+                                            <button type="reset" name="resetbtn" class="btn btn-secondary mr-2">Reset</button>
                                             <button class="btn btn-light"> <a href="admin.php" align="center">Cancel</a></button>
                                     </form>
                         <?php
