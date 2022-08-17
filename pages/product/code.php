@@ -51,7 +51,7 @@ if (isset($_POST['save_product'])) {
 }
 
 //add item1 page
-if (isset($_POST['save_product'])) {
+if (isset($_POST['save_product1'])) {
 	$category = $_POST['product_category'];
 	$name = $_POST['product_name'];
 	$description = $_POST['product_description'];
@@ -162,7 +162,7 @@ if (isset($_POST['update_btn'])) {
 
 // Update product Details items1 page
 
-if (isset($_POST['update_btn'])) {
+if (isset($_POST['update_btn1'])) {
 	$edit_id = $_POST['edit_ItemNo'];
 	$edit_name = $_POST['edit_name'];
 	$edit_category = $_POST['edit_category'];
@@ -244,8 +244,8 @@ if (isset($_POST['delete_btn'])) {
 
 //delete product items1 page
 
-if (isset($_POST['delete_btn'])) {
-	$id = $_POST['delete_id'];
+if (isset($_POST['delete_btn1'])) {
+	$id = $_POST['delete_id1'];
 
 	$query = "DELETE FROM menu where ItemNo='$id'";
 	$query_run = mysqli_query($connection, $query);
