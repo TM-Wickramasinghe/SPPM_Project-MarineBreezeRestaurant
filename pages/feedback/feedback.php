@@ -1,8 +1,7 @@
 <?php
 include '../includes/security.php';
 include '../includes/header.php';
-include '../includes/nav.php';
-
+include '../includes/nav1.php';
 ?>
 
 <div class="main-panel">
@@ -11,7 +10,10 @@ include '../includes/nav.php';
             <h3 class="page-title"> Customer FeedBack </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <?php
+                    $desig = $_SESSION['desig'];
+                    ?>
+                    <li class="breadcrumb-item"><a href="#"><?php echo $desig ?></a></li>
                     <li class="breadcrumb-item active" aria-current="page">Admin Panel</li>
                 </ol>
             </nav>
@@ -21,7 +23,7 @@ include '../includes/nav.php';
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">FeedBacks</h4>
+                        <h4 class="card-title">FeedBack</h4>
 
                         <div class="template-demo">
                             <button type="submit" class="btn btn-dark" name="printbtn" onclick="window.print();">PRINT</button>
