@@ -10,7 +10,10 @@ include '../includes/nav1.php';
       <h3 class="page-title"> Reservation Management </h3>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Admin</a></li>
+          <?php
+          $desig = $_SESSION['desig'];
+          ?>
+          <li class="breadcrumb-item"><a href="#"><?php echo $desig ?></a></li>
           <li class="breadcrumb-item active" aria-current="page">Admin Panel</li>
         </ol>
       </nav>
@@ -106,7 +109,7 @@ include '../includes/nav1.php';
       <div class="col-md-6 grid-margin stretch-card" align="center">
         <div class="card" align="center">
           <div class="card-body">
-            <h4 class="card-title"><a id="add1">Adding a New Employer</a></h4>
+            <h4 class="card-title"><a id="add1">Adding a Reservation</a></h4>
             <form action="code.php" method="POST" class="forms-sample">
               <div class="form-group row">
                 <label for="name" class="col-sm-3 col-form-label">Name</label>
@@ -237,9 +240,11 @@ include '../includes/nav1.php';
                           <input type="text" class="form-control" name="edit_msg" placeholder="Message" value="<?php echo $row['rMessage'] ?>">
                         </div>
                       </div>
-
-                      <button type="submit" name="update_btn" class="btn btn-primary mr-2">Update</button>
-                      <button class="btn btn-light"> <a href="admin.php">Cancel</a></button>
+                      <div align="center">
+                        <button type="submit" name="update_btn" class="btn btn-primary mr-2" align="center">Update</button>
+                        <button type="reset" name="resetbtn" class="btn btn-secondary mr-2" align="center">Reset</button>
+                        <button class="btn btn-light"> <a href="reservation.php" align="center">Cancel</a></button>
+                      </div>
                   </form>
             <?php
             }
