@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../feedback/feedback.php">
+              <a class="nav-link" href="../feedback/feedback1.php">
                 <span class="menu-title">FeedBack</span>
                 <i class="icon-globe menu-icon"></i>
               </a>
