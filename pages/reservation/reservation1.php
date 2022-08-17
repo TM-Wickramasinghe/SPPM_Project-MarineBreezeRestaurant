@@ -158,7 +158,7 @@ include '../includes/nav.php';
 
               <button type="submit" name="addbtn1" class="btn btn-primary mr-2">Submit</button>
               <button type="reset" name="resetbtn" class="btn btn-secondary mr-2">Reset</button>
-              <button class="btn btn-light"><a href="reservation.php">Cancel</a></button>
+              <button class="btn btn-light"><a href="reservation1.php">Cancel</a></button>
             </form>
           </div>
         </div>
@@ -242,7 +242,7 @@ include '../includes/nav.php';
                       </div>
                       <div align="center">
                         <button type="submit" name="update_btn1" class="btn btn-primary mr-2" align="center">Update</button>
-                        <button class="btn btn-light"> <a href="reservation.php" align="center">Cancel</a></button>
+                        <button class="btn btn-light"> <a href="reservation1.php" align="center">Cancel</a></button>
                       </div>
                   </form>
             <?php
