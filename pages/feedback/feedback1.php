@@ -24,10 +24,10 @@ include '../includes/nav.php';
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">FeedBack</h4>
+                        <h4 class="card-title">FeedBacks</h4>
 
                         <div class="template-demo">
-                            <button type="submit" class="btn btn-dark" name="printbtn" onclick="window.print();">PRINT</button>
+                            <button type="submit" class="btn btn-dark" name="printbtn1" onclick="window.print();">PRINT</button>
                         </div>
 
                         <?php
@@ -63,8 +63,8 @@ include '../includes/nav.php';
                                                 <td align="center">
                                                     <form action="codefeedback.php" method="post">
                                                         <div class="template-demo">
-                                                            <input type="hidden" name="delete_fID" value="<?php echo $row['fID']; ?>">
-                                                            <button type="submit" class="btn btn-danger " name="deletebtn"><i class="icon-trash"></i></button>
+                                                            <input type="hidden" name="delete_fID1" value="<?php echo $row['fID']; ?>">
+                                                            <button type="submit" class="btn btn-danger " name="deletebtn1"><i class="icon-trash"></i></button>
                                                         </div>
                                                     </form>
                                                 </td>
