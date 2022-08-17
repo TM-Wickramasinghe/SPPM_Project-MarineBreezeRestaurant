@@ -83,7 +83,7 @@ if (isset($_POST['update_btn'])) {
 
 //edit reservation1
 if (isset($_POST['update_btn1'])) {
-    $id = $_POST['edit_id1'];
+    $id = $_POST['edit_id'];
     $date = $_POST['edit_date'];
     $time = $_POST['edit_time'];
     $peoplecount = $_POST['edit_NOP'];
