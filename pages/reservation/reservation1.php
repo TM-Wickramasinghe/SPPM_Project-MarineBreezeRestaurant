@@ -25,7 +25,7 @@ include '../includes/nav.php';
 
             <h4 class="card-title">RESERVATIONS</h4>
             <div class="template-demo">
-              <button type="button" class="btn btn-dark" name="addbtn1">Book</button>
+              <button type="button" class="btn btn-dark" name="addbtn1"><a href="#add1">Book</a></button>
             </div>
 
             <?php
@@ -70,10 +70,10 @@ include '../includes/nav.php';
                       <td><?php echo $row['rNoOfPeople'] ?></td>
                       <td><?php echo $row['rMessage'] ?></td>
                       <td align="center">
-                        <form action="reservation.php" method="post">
+                        <form action="reservation1.php" method="post">
                           <div class="template-demo">
-                            <input type="hidden" name="edit_ID" value="<?php echo $row['rID']; ?>">
-                            <button type="submit" class="btn btn-warning " name="editbtn"><i class="icon-pencil"></i></button>
+                            <input type="hidden" name="edit_ID1" value="<?php echo $row['rID']; ?>">
+                            <button type="submit" class="btn btn-warning " name="editbtn1"><i class="icon-pencil"></i></button>
                           </div>
                         </form>
                       </td>
@@ -81,8 +81,8 @@ include '../includes/nav.php';
                       <td align="center">
                         <form action="code.php" method="post">
                           <div class="template-demo">
-                            <input type="hidden" name="delete_id" value="<?php echo $row['rID']; ?>">
-                            <button type="submit" class="btn btn-danger " name="deletebtn"><i class="icon-trash"></i></button>
+                            <input type="hidden" name="delete_id1" value="<?php echo $row['rID']; ?>">
+                            <button type="submit" class="btn btn-danger " name="deletebtn1"><i class="icon-trash"></i></button>
                           </div>
                         </form>
                       </td>
@@ -156,7 +156,7 @@ include '../includes/nav.php';
 
 
 
-              <button type="submit" name="addbtn" class="btn btn-primary mr-2">Submit</button>
+              <button type="submit" name="addbtn1" class="btn btn-primary mr-2">Submit</button>
               <button type="reset" name="resetbtn" class="btn btn-secondary mr-2">Reset</button>
               <button class="btn btn-light"><a href="reservation.php">Cancel</a></button>
             </form>
@@ -169,8 +169,8 @@ include '../includes/nav.php';
       <div class="col-md-6 grid-margin stretch-card" align="center">
         <?php
 
-        if (isset($_POST['editbtn'])) {
-          $id = $_POST['edit_ID'];
+        if (isset($_POST['editbtn1'])) {
+          $id = $_POST['edit_ID1'];
 
           $query = "SELECT * FROM reservation WHERE rID='$id' ";
           $query_run = mysqli_query($connection, $query);
@@ -241,7 +241,7 @@ include '../includes/nav.php';
                         </div>
                       </div>
                       <div align="center">
-                        <button type="submit" name="update_btn" class="btn btn-primary mr-2" align="center">Update</button>
+                        <button type="submit" name="update_btn1" class="btn btn-primary mr-2" align="center">Update</button>
                         <button type="reset" name="resetbtn" class="btn btn-secondary mr-2" align="center">Reset</button>
                         <button class="btn btn-light"> <a href="reservation.php" align="center">Cancel</a></button>
                       </div>
