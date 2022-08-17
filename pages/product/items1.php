@@ -68,18 +68,18 @@ include '../includes/nav.php';
                       <td><?php echo $row['PriceLarge'] ?></td>
                       <td><?php echo $row['Availability'] ?></td>
                       <td align="center">
-                        <form action="items.php" method="post">
+                        <form action="items1.php" method="post">
                           <div class="template-demo">
-                            <input type="hidden" name="edit_ID" value="<?php echo $row['ItemNo']; ?>">
-                            <button type="submit" class="btn btn-warning " name="edittbtn"><i class="icon-pencil"></i></button>
+                            <input type="hidden" name="edit_ID1" value="<?php echo $row['ItemNo']; ?>">
+                            <button type="submit" class="btn btn-warning " name="edittbtn1"><i class="icon-pencil"></i></button>
                           </div>
                         </form>
                       </td>
                       <td align="center">
                         <form action="code.php" method="post">
                           <div class="template-demo">
-                            <input type="hidden" name="delete_id" value="<?php echo $row['ItemNo']; ?>">
-                            <button type="submit" class="btn btn-danger " name="delete_btn"><i class="icon-trash"></i></button>
+                            <input type="hidden" name="delete_id1" value="<?php echo $row['ItemNo']; ?>">
+                            <button type="submit" class="btn btn-danger " name="delete_btn1"><i class="icon-trash"></i></button>
                           </div>
                         </form>
                       </td>
@@ -176,8 +176,8 @@ include '../includes/nav.php';
       <div class="col-md-6 grid-margin stretch-card" align="center">
         <?php
 
-        if (isset($_POST['edittbtn'])) {
-          $id = $_POST['edit_ID'];
+        if (isset($_POST['edittbtn1'])) {
+          $id = $_POST['edit_ID1'];
 
           $query = "SELECT * FROM menu WHERE ItemNo='$id' ";
           $query_run = mysqli_query($connection, $query);
@@ -197,7 +197,7 @@ include '../includes/nav.php';
 
               <div class="card" align="center">
                 <div class="card-body">
-                  <h4 class="card-title"><a id="edit1">Edit Product Details</a></h4>
+                  <h4 class="card-title"><a id="edit1">Update Product Details</a></h4>
 
 
 
@@ -258,7 +258,7 @@ include '../includes/nav.php';
                       </div>
                     </div>
 
-                    <button type="submit" name="update_btn" class="btn btn-primary mr-2">Update</button>
+                    <button type="submit" name="update_btn1" class="btn btn-primary mr-2">Update</button>
                     <button class="btn btn-light"> <a href="items1.php">Cancel</a></button>
                   </form>
             <?php
