@@ -242,7 +242,6 @@ include '../includes/nav1.php';
                       </div>
                       <div align="center">
                         <button type="submit" name="update_btn" class="btn btn-primary mr-2" align="center">Update</button>
-                        <button type="reset" name="resetbtn" class="btn btn-secondary mr-2" align="center">Reset</button>
                         <button class="btn btn-light"> <a href="reservation.php" align="center">Cancel</a></button>
                       </div>
                   </form>
