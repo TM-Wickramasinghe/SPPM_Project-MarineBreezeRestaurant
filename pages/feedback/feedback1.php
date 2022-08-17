@@ -24,7 +24,7 @@ include '../includes/nav.php';
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">FeedBacks</h4>
+                        <h4 class="card-title">FeedBack</h4>
 
                         <div class="template-demo">
                             <button type="submit" class="btn btn-dark" name="printbtn" onclick="window.print();">PRINT</button>
