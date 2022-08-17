@@ -2,8 +2,5 @@
 SPPM PROJECT - GROUP 13
 
 todo:
--finalizing reservation
+-reservation email sending for confirming the reservation
 -implementing chatbot
--clientsite website menu pic path
--clientsidewebsite sweet alert
--email 
