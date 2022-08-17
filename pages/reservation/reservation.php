@@ -25,7 +25,7 @@ include '../includes/nav1.php';
 
             <h4 class="card-title">RESERVATIONS</h4>
             <div class="template-demo">
-              <button type="button" class="btn btn-dark" name="addbtn1">Book</button>
+              <button type="button" class="btn btn-dark" name="addbtn1"><a href="#add">Book</a></button>
             </div>
 
             <?php
@@ -109,7 +109,7 @@ include '../includes/nav1.php';
       <div class="col-md-6 grid-margin stretch-card" align="center">
         <div class="card" align="center">
           <div class="card-body">
-            <h4 class="card-title"><a id="add1">Adding a Reservation</a></h4>
+            <h4 class="card-title"><a id="add">Adding a Reservation</a></h4>
             <form action="code.php" method="POST" class="forms-sample">
               <div class="form-group row">
                 <label for="name" class="col-sm-3 col-form-label">Name</label>
