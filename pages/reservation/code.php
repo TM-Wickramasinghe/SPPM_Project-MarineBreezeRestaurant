@@ -1,7 +1,5 @@
 <?php
-
 include '../includes/security.php';
-
 
 //register ADMIN
 
