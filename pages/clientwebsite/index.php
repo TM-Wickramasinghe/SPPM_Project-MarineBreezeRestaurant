@@ -258,7 +258,8 @@
 							<div class="col-lg-12 menu-item filter-<?php echo $row['Category']; ?>">
 								<div clas="row col-lg-12">
 									<div class="col-lg-3">
-										<img src="<?php echo $row['Picture']; ?>" class="menu-img" alt="">
+										<!---<img src="<?php echo $row['Picture']; ?>" class="menu-img" alt="">----->
+									        <img src="../product/upload/<?php echo $row['Picture']; ?>" alt="Product Images"  class="menu-img">
 									</div>
 									<div class="col-lg-9">
 										<div class="row">
