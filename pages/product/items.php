@@ -154,8 +154,8 @@ include '../includes/nav1.php';
                 <label for="availability" class="col-sm-3 col-form-label">Availability</label>
                 <div class="col-sm-9">
                   <select class="form-control" name="product_availability" id="availability" placeholder="Availability">
-                    <option>Yes</option>
-                    <option>No</option>
+                    <option>Available</option>
+                    <option>Not Available</option>
                   </select>
                 </div>
               </div>
@@ -253,8 +253,8 @@ include '../includes/nav1.php';
                       <label for="availability" class="col-sm-3 col-form-label">Availability</label>
                       <div class="col-sm-9">
                         <select class="form-control" name="edit_availability" value="<?php echo $row['Availability'] ?>" id="edit_availability" placeholder="Availability">
-                          <option>Yes</option>
-                          <option>No</option>
+                          <option>Available</option>
+                    <option>Not Available</option>
                         </select>
                       </div>
                     </div>
