@@ -47,7 +47,7 @@ include '../includes/nav1.php';
                     <th>DESCRIPTION</th>
                     <th>SMALL</th>
                     <th>MEDIUM</th>
-                    <th> LARGE</th>
+                    <th>LARGE</th>
                     <th>AVAILABILITY</th>
                     <th>EDIT</th>
                     <th>DELETE</th>
@@ -62,6 +62,7 @@ include '../includes/nav1.php';
                       <td><?php echo $row['Name'] ?></td>
                       <td><?php echo $row['Category'] ?></td>
                       <td><?php echo '<img src="upload/' . $row['Picture'] . '" width="200px;" height="200px;" alt="Image">' ?></td>
+                      '<img src="<?php echo $row['Picture']; ?> class=" menu-img" alt="">
                       <td><?php echo $row['Description'] ?></td>
                       <td><?php echo $row['PriceSmall'] ?></td>
                       <td><?php echo $row['PriceMedium'] ?></td>
@@ -108,10 +109,23 @@ include '../includes/nav1.php';
           <div class="card-body">
             <h4 class="card-title"><a id="add1">Adding a New Product</a></h4>
             <form action="code.php" method="POST" enctype="multipart/form-data" class="forms-sample">
-              <div class="form-group row">
+              <!--<div class="form-group row">
                 <label for="category" class="col-sm-3 col-form-label">Category</label>
                 <div class="col-sm-9">
                   <input type="text" name="product_category" class="form-control" id="category" placeholder="Category">
+                </div>
+              </div>--->
+              <div class="form-group row">
+                <label for="category" class="col-sm-3 col-form-label">Category</label>
+                <div class="col-sm-9">
+                  <select class="form-control" name="product_category" id="product_category" placeholder="Category">
+                    <option>-- Category --</option>
+                    <option>Main_Course</option>
+                    <option>Side_Dish</option>
+                    <option>Appetizers</option>
+                    <option>Dessert</option>
+                    <option>Drinks</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group row">
@@ -207,10 +221,23 @@ include '../includes/nav1.php';
 
                     <input type="hidden" name="edit_ItemNo" value="<?php echo $row['ItemNo'] ?>">
 
-                    <div class="form-group row">
+                    <!---<div class="form-group row">
                       <label for="category" class="col-sm-3 col-form-label">Category</label>
                       <div class="col-sm-9">
                         <input type="text" name="edit_category" value="<?php echo $row['Category'] ?>" class="form-control" id="edit_category" placeholder="Category">
+                      </div>
+                    </div>-->
+                    <div class="form-group row">
+                      <label for="category" class="col-sm-3 col-form-label">Category</label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="edit_category" <?php if ($row['ItemNo'] == $row['Category']) { ?> selected="selected" <?php } ?> value="<?php echo $row['ItemNo']; ?>" id="edit_category" placeholder="Category">
+                          <option><?php echo $row['Category'] ?></option>
+                          <option>Main_Course</option>
+                          <option>Side_Dish</option>
+                          <option>Appetizers</option>
+                          <option>Dessert</option>
+                          <option>Drinks</option>
+                        </select>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -254,7 +281,7 @@ include '../includes/nav1.php';
                       <div class="col-sm-9">
                         <select class="form-control" name="edit_availability" value="<?php echo $row['Availability'] ?>" id="edit_availability" placeholder="Availability">
                           <option>Available</option>
-                    <option>Not Available</option>
+                          <option>Not Available</option>
                         </select>
                       </div>
                     </div>
