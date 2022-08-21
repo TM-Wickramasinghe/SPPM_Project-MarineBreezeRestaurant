@@ -68,7 +68,7 @@ include '../includes/nav1.php';
                       <td><?php echo $row['rNoOfPeople'] ?></td>
                       <td><?php echo $row['rMessage'] ?></td>
                       <td align="center">
-                        <form action="CODE.php" method="post">
+                        <form action="code.php" method="post">
                           <div class="template-demo">
                             <input type="hidden" name="cancel_ID" value="<?php echo $row['rID']; ?>">
                             <button type="submit" class="btn btn-dark" name="cancelbtn"><i class="icon-envelope"></i></button>
