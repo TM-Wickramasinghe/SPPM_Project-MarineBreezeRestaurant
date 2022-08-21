@@ -17,11 +17,11 @@ if (isset($_POST['addbtn'])) {
     $query_run = mysqli_query($connection, $query);
 
     if ($query_run) {
-        $_SESSION['status'] = "Registration Success!!!";
+        $_SESSION['status'] = "Add Reservation Success!!!";
         $_SESSION['status_code'] = "success";
         header('Location: reservation.php');
     } else {
-        $_SESSION['status'] = "Registration Failed";
+        $_SESSION['status'] = "Add Reservation Failed";
         $_SESSION['status_code'] = "error";
         header('Location: reservation.php');
     }
@@ -43,11 +43,11 @@ if (isset($_POST['addbtn1'])) {
     $query_run = mysqli_query($connection, $query);
 
     if ($query_run) {
-        $_SESSION['status'] = "Registration Success!!!";
+        $_SESSION['status'] = "Add Reservation Success!!!";
         $_SESSION['status_code'] = "success";
         header('Location: reservation1.php');
     } else {
-        $_SESSION['status'] = "Registration Failed";
+        $_SESSION['status'] = "Add Reservation Failed";
         $_SESSION['status_code'] = "error";
         header('Location: reservation1.php');
     }
@@ -118,11 +118,11 @@ if (isset($_POST['deletebtn'])) {
     $query_run = mysqli_query($connection, $query);
 
     if ($query_run) {
-        $_SESSION['status'] = "Admin Profile Successfully DELETED";
+        $_SESSION['status'] = "Reservation Successfully DELETED";
         $_SESSION['status_code'] = "success";
         header('Location: reservation.php');
     } else {
-        $_SESSION['status'] = "Admin Profile is NOT DELETED";
+        $_SESSION['status'] = "Reservation is NOT DELETED";
         $_SESSION['status_code'] = "error";
         header('Location: reservation.php');
     }
@@ -137,11 +137,139 @@ if (isset($_POST['deletebtn1'])) {
     $query_run = mysqli_query($connection, $query);
 
     if ($query_run) {
-        $_SESSION['status'] = "Admin Profile Successfully DELETED";
+        $_SESSION['status'] = "Reservation Successfully DELETED";
         $_SESSION['status_code'] = "success";
         header('Location: reservation1.php');
     } else {
-        $_SESSION['status'] = "Admin Profile is NOT DELETED";
+        $_SESSION['status'] = "Reservation is NOT DELETED";
+        $_SESSION['status_code'] = "error";
+        header('Location: reservation1.php');
+    }
+}
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpmailer/src/Exception.php';
+require 'phpmailer/src/PHPMailer.php';
+require 'phpmailer/src/SMTP.php';
+
+//cancel reservation
+if (isset($_POST['cancelbtn'])) {
+    $ID = $_POST['cancel_ID'];
+
+    $query1 = "SELECT * FROM reservation WHERE  rID='$ID' ";
+    $query_run1 = mysqli_query($connection, $query1);
+    $user = mysqli_fetch_assoc($query_run1);
+    $get_email = $user['rEmail'];
+    if ($query_run1) {
+        $mail = new PHPMailer(true);
+        //Server settings
+
+        $mail->isSMTP();                                                       //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                                 //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                               //Enable SMTP authentication
+        $mail->Username   = 'marinebreeze3@gmail.com';                         //SMTP username
+        $mail->Password   = 'uxuswdswirjdyzyh';                               //SMTP password
+        $mail->SMTPSecure = 'ssl';                                            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                              //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('marinebreeze3@gmail.com');
+        $mail->addAddress($get_email);
+
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = 'Reset Password Notification';
+
+        $email_template = "
+            <h3>Dear Customer,</h3>
+            <h4>Thank you for adding a reservation at our Marine Breeze Restaurant. Unfortunately, this email confirms that your reservation at Marine Breeze Restaurant has been cancelled. 
+            Due to insufficient space.</h4>
+            <h4>Thank you.</h4>
+            <h4>Marine Breeze Restaurant,</h4>
+            <h4>Kalutara.</h4>
+            ";
+
+        $mail->Body    = $email_template;
+        $mail->send();
+
+
+        $query = "DELETE  FROM reservation WHERE  rID='$ID' ";
+        $query_run = mysqli_query($connection, $query);
+
+        if ($query_run) {
+            $_SESSION['status'] = "Reservation Cancel Successfully DELETED";
+            $_SESSION['status_code'] = "success";
+            header('Location: reservation.php');
+        } else {
+            $_SESSION['status'] = "Reservation Cancel is NOT DELETED";
+            $_SESSION['status_code'] = "error";
+            header('Location: reservation.php');
+        }
+    } else {
+        $_SESSION['status'] = "Something went wronged. #1";
+        $_SESSION['status_code'] = "error";
+        header('Location: reservation.php');
+    }
+}
+
+//cancel reservation1
+if (isset($_POST['cancelbtn1'])) {
+    $ID = $_POST['cancel_ID1'];
+
+    $query1 = "SELECT * FROM reservation WHERE  rID='$ID' ";
+    $query_run1 = mysqli_query($connection, $query1);
+    $user = mysqli_fetch_assoc($query_run1);
+    $get_email = $user['rEmail'];
+    if ($query_run1) {
+        $mail = new PHPMailer(true);
+        //Server settings
+
+        $mail->isSMTP();                                                       //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                                 //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                               //Enable SMTP authentication
+        $mail->Username   = 'marinebreeze3@gmail.com';                         //SMTP username
+        $mail->Password   = 'uxuswdswirjdyzyh';                               //SMTP password
+        $mail->SMTPSecure = 'ssl';                                            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                              //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('marinebreeze3@gmail.com');
+        $mail->addAddress($get_email);
+
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = 'Reset Password Notification';
+
+        $email_template = "
+            <h3>Dear Customer,</h3>
+            <h4>Thank you for adding a reservation at our Marine Breeze Restaurant. Unfortunately, this email confirms that your reservation at Marine Breeze Restaurant has been cancelled. 
+            Due to insufficient space.</h4>
+            <h4>Thank you.</h4>
+            <h4>Marine Breeze Restaurant,</h4>
+            <h4>Kalutara.</h4>
+            ";
+
+        $mail->Body    = $email_template;
+        $mail->send();
+
+
+        $query = "DELETE  FROM reservation WHERE  rID='$ID' ";
+        $query_run = mysqli_query($connection, $query);
+
+        if ($query_run) {
+            $_SESSION['status'] = "Reservation Cancel Successfully DELETED";
+            $_SESSION['status_code'] = "success";
+            header('Location: reservation1.php');
+        } else {
+            $_SESSION['status'] = "Reservation Cancel is NOT DELETED";
+            $_SESSION['status_code'] = "error";
+            header('Location: reservation1.php');
+        }
+    } else {
+        $_SESSION['status'] = "Something went wronged. #1";
         $_SESSION['status_code'] = "error";
         header('Location: reservation1.php');
     }
