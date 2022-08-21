@@ -9,14 +9,14 @@
 	<meta content="" name="description">
 	<meta content="" name="keywords">
 
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="sweetalert2.min.js"></script>
 	<link rel="stylesheet" href="sweetalert2.min.css">
 
 	<!-- Favicons -->
 	<link href="assets/img/favicon.png" rel="icon">
 	<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-	
+
 	<!--Sweat -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -57,7 +57,7 @@
 
 
 		$result = mysqli_query($con, $sql);
-		
+
 		header("Location: index.php?booking=1");
 	}
 
@@ -80,8 +80,6 @@
   imageAlt: "Custom image",
  
         }); </script>';
-		
-		
 	}
 	?>
 	<!-- ======= Top Bar ======= -->
@@ -257,9 +255,10 @@
 					?>
 							<div class="col-lg-12 menu-item filter-<?php echo $row['Category']; ?>">
 								<div clas="row col-lg-12">
-									<div class="col-lg-3">
+									<div class="col-lg-6">
+
 										<!---<img src="<?php echo $row['Picture']; ?>" class="menu-img" alt="">----->
-									        <img src="../product/upload/<?php echo $row['Picture']; ?>" alt="Product Images"  class="menu-img">
+										<img src="../product/upload/<?php echo $row['Picture']; ?>" alt="Product Images" class="menu-img">
 									</div>
 									<div class="col-lg-9">
 										<div class="row">
@@ -562,25 +561,23 @@
 
 					</div>
 
-					<div class="text-center"><input type="submit" name="submit" class="btn btn-primary mr-2" value="Book a Table" style="background-color: #A38212"  onClick="validateName()"/>
+					<div class="text-center"><input type="submit" name="submit" class="btn btn-primary mr-2" value="Book a Table" style="background-color: #A38212" onClick="validateName()" />
 					</div>
 
 				</form>
 
-<script type="text/javascript">
-function validateName(){  
-		var name=document.getElementsByName("name").value; 
+				<script type="text/javascript">
+					function validateName() {
+						var name = document.getElementsByName("name").value;
 
-			if (name==null || name=="" ){  
- 				alert "Not"
-				return false; 
-			}else{
-				return true;
-			}
-}
-	
-	
-</script>
+						if (name == null || name == "") {
+							alert "Not"
+							return false;
+						} else {
+							return true;
+						}
+					}
+				</script>
 
 
 
@@ -853,11 +850,12 @@ function validateName(){
 		</section>
 		<!-- End Contact Section -->
 
+		<!-- AI CHATBOT -->
+		<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+		<df-messenger intent="WELCOME" chat-title="MBBot" agent-id="8daef6bb-751e-4dd2-a504-c6754ba7b3cb" language-code="en"></df-messenger>
+
 	</main>
 	<!-- End #main -->
-
-
-
 	<div class="container">
 		<div class="copyright">
 			<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Marine Breeze
@@ -888,7 +886,6 @@ function validateName(){
 	<script src="assets/js/main.js"></script>
 
 </body>
-	
-	
+
 
 </html>
