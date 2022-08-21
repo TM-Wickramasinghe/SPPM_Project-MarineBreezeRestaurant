@@ -163,6 +163,7 @@ if (isset($_POST['cancelbtn'])) {
     $query_run1 = mysqli_query($connection, $query1);
     $user = mysqli_fetch_assoc($query_run1);
     $get_email = $user['rEmail'];
+
     if ($query_run1) {
         $mail = new PHPMailer(true);
         //Server settings
@@ -181,7 +182,7 @@ if (isset($_POST['cancelbtn'])) {
 
         //Content
         $mail->isHTML(true);
-        $mail->Subject = 'Reset Password Notification';
+        $mail->Subject = 'Reservation Cancellation';
 
         $email_template = "
             <h3>Dear Customer,</h3>
@@ -195,16 +196,15 @@ if (isset($_POST['cancelbtn'])) {
         $mail->Body    = $email_template;
         $mail->send();
 
-
         $query = "DELETE  FROM reservation WHERE  rID='$ID' ";
         $query_run = mysqli_query($connection, $query);
 
         if ($query_run) {
-            $_SESSION['status'] = "Reservation Cancel Successfully DELETED";
+            $_SESSION['status'] = "Reservation Cancellation Successfull";
             $_SESSION['status_code'] = "success";
             header('Location: reservation.php');
         } else {
-            $_SESSION['status'] = "Reservation Cancel is NOT DELETED";
+            $_SESSION['status'] = "Reservation Cancellation Failed";
             $_SESSION['status_code'] = "error";
             header('Location: reservation.php');
         }
@@ -223,6 +223,7 @@ if (isset($_POST['cancelbtn1'])) {
     $query_run1 = mysqli_query($connection, $query1);
     $user = mysqli_fetch_assoc($query_run1);
     $get_email = $user['rEmail'];
+
     if ($query_run1) {
         $mail = new PHPMailer(true);
         //Server settings
@@ -241,7 +242,7 @@ if (isset($_POST['cancelbtn1'])) {
 
         //Content
         $mail->isHTML(true);
-        $mail->Subject = 'Reset Password Notification';
+        $mail->Subject = 'Reservation Cancellation';
 
         $email_template = "
             <h3>Dear Customer,</h3>
@@ -255,16 +256,15 @@ if (isset($_POST['cancelbtn1'])) {
         $mail->Body    = $email_template;
         $mail->send();
 
-
         $query = "DELETE  FROM reservation WHERE  rID='$ID' ";
         $query_run = mysqli_query($connection, $query);
 
         if ($query_run) {
-            $_SESSION['status'] = "Reservation Cancel Successfully DELETED";
+            $_SESSION['status'] = "Reservation Cancellation Successfull";
             $_SESSION['status_code'] = "success";
             header('Location: reservation1.php');
         } else {
-            $_SESSION['status'] = "Reservation Cancel is NOT DELETED";
+            $_SESSION['status'] = "Reservation Cancellation Failed";
             $_SESSION['status_code'] = "error";
             header('Location: reservation1.php');
         }
