@@ -24,9 +24,6 @@ include '../includes/nav1.php';
           <div class="card-body">
 
             <h4 class="card-title">RESERVATIONS</h4>
-            <div class="template-demo">
-              <button type="button" class="btn btn-dark" name="addbtn1"><a href="#add">Book</a></button>
-            </div>
 
             <?php
 
@@ -48,6 +45,7 @@ include '../includes/nav1.php';
                     <th>TIME</th>
                     <th>N.O.P</th>
                     <th>MESSAGE</th>
+                    <th>CANCEL RESERVATION</th>
                     <th>EDIT</th>
                     <th>DELETE</th></br>
                   </tr>
@@ -69,6 +67,14 @@ include '../includes/nav1.php';
                       <td><?php echo $row['rTime'] ?></td>
                       <td><?php echo $row['rNoOfPeople'] ?></td>
                       <td><?php echo $row['rMessage'] ?></td>
+                      <td align="center">
+                        <form action="CODE.php" method="post">
+                          <div class="template-demo">
+                            <input type="hidden" name="cancel_ID" value="<?php echo $row['rID']; ?>">
+                            <button type="submit" class="btn btn-dark" name="cancelbtn"><i class="icon-envelope"></i></button>
+                          </div>
+                        </form>
+                      </td>
                       <td align="center">
                         <form action="reservation.php" method="post">
                           <div class="template-demo">
