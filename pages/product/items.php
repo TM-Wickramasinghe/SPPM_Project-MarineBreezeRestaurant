@@ -1,6 +1,36 @@
 <?php
 include '../includes/security.php';
 include '../includes/header.php';
+?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $(".delbutton").click(function() {
+      //Save the link in a variable called element
+      var element = $(this);
+      //Find the id of the link that was clicked
+      var del_id = element.attr("id");
+      //Built a url to send
+      var info = 'id=' + del_id;
+      if (confirm("Sure you want to delete this product? There is NO undo!")) {
+        $.ajax({
+          type: "GET",
+          url: "code.php",
+          data: info,
+          success: function(data) {
+            alert(data);
+          }
+        }).then((Confirmed) => {
+          window.location.reload();
+        });
+      }
+      return false;
+    });
+  });
+</script>
+
+<?php
 include '../includes/nav1.php';
 ?>
 
@@ -77,12 +107,8 @@ include '../includes/nav1.php';
                         </form>
                       </td>
                       <td align="center">
-                        <form action="code.php" method="post">
-                          <div class="template-demo">
-                            <input type="hidden" name="delete_id" value="<?php echo $row['ItemNo']; ?>">
-                            <button type="submit" class="btn btn-danger " name="delete_btn"><i class="icon-trash"></i></button>
-                          </div>
-                        </form>
+                        <button type="button" class='delbutton btn btn-danger' id='<?php echo $row['ItemNo']; ?>'>
+                          <i class="icon-trash"></i></button>
                       </td>
                     </tr>
                   <?php
