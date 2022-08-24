@@ -221,44 +221,19 @@ if (isset($_POST['update_btn1'])) {
 	}
 }
 
-//delete product items page
-
-if (isset($_POST['delete_btn'])) {
-	$id = $_POST['delete_id'];
-
-	$query = "DELETE FROM menu where ItemNo='$id'";
+//delete product items
+if ($_GET['id']) {
+	$id = $_GET['id'];
+	$query = "DELETE  FROM menu WHERE  ItemNo='$id' ";
 	$query_run = mysqli_query($connection, $query);
 
 	if ($query_run) {
-		//$_SESSION['success'] = "Product data deleted successfully";
-		$_SESSION['status'] = "Item Successfully DELETED";
+		echo "Product data deleted successfully";
+		$_SESSION['status'] = "Product Successfully DELETED";
 		$_SESSION['status_code'] = "success";
-		header('Location: items.php');
 	} else {
-		// $_SESSION['status'] = "Product data not deleted";
+		echo "Error deleting record";
 		$_SESSION['status'] = "Product is NOT DELETED";
 		$_SESSION['status_code'] = "error";
-		header('Location: items.php');
-	}
-}
-
-//delete product items1 page
-
-if (isset($_POST['delete_btn1'])) {
-	$id = $_POST['delete_id1'];
-
-	$query = "DELETE FROM menu where ItemNo='$id'";
-	$query_run = mysqli_query($connection, $query);
-
-	if ($query_run) {
-		//$_SESSION['success'] = "Product data deleted successfully";
-		$_SESSION['status'] = "Item Successfully DELETED";
-		$_SESSION['status_code'] = "success";
-		header('Location: items1.php');
-	} else {
-		// $_SESSION['status'] = "Product data not deleted";
-		$_SESSION['status'] = "Product is NOT DELETED";
-		$_SESSION['status_code'] = "error";
-		header('Location: items1.php');
 	}
 }
