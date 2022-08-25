@@ -15,7 +15,7 @@ include '../includes/security.php';
             if (confirm("Sure you want to delete this reservation? There is NO undo!")) {
                 $.ajax({
                     type: "GET",
-                    url: "code.php",
+                    url: "codefeedback.php",
                     data: info,
                     success: function(data) {
                         alert(data);
