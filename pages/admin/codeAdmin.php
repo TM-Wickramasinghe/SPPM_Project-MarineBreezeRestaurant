@@ -116,20 +116,18 @@ if (isset($_POST['edit_'])) {
 }
 
 //delete admin profiles
-
-if (isset($_POST['deletebtn'])) {
-    $aID = $_POST['delete_aID'];
-
-    $query = "DELETE  FROM admin WHERE  aID='$aID' ";
+if ($_GET['id']) {
+    $id = $_GET['id'];
+    $query = "DELETE  FROM admin WHERE  aID='$id' ";
     $query_run = mysqli_query($connection, $query);
 
     if ($query_run) {
-        $_SESSION['status'] = "Admin Profile Successfully DELETED";
+        echo "Admin profile deleted successfully";
+        $_SESSION['status'] = "Admin Profile Successfully REMOVED";
         $_SESSION['status_code'] = "success";
-        header('Location: admin.php');
     } else {
-        $_SESSION['status'] = "Admin Profile is NOT DELETED";
+        echo "Error deleting Admin profile";
+        $_SESSION['status'] = "Admin Profile is NOT REMOVED";
         $_SESSION['status_code'] = "error";
-        header('Location: admin.php');
     }
 }
