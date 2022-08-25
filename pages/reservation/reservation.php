@@ -1,8 +1,59 @@
 <?php
 include '../includes/security.php';
 include '../includes/header.php';
+?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $(".delbutton").click(function() {
+      //Save the link in a variable called element
+      var element = $(this);
+      //Find the id of the link that was clicked
+      var del_id = element.attr("id");
+      //Built a url to send
+      var info = 'id=' + del_id;
+      if (confirm("Sure you want to delete this reservation? There is NO undo!")) {
+        $.ajax({
+          type: "GET",
+          url: "code.php",
+          data: info,
+          success: function(data) {
+            alert(data);
+          }
+        }).then((Confirmed) => {
+          window.location.reload();
+        });
+      }
+      return false;
+    });
+  });
+</script>
+
+<?php
 include '../includes/nav1.php';
 ?>
+
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    overflow: scroll;
+    overflow: auto;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #DDD;
+  }
+
+  tr:hover {
+    background-color: #D6EEEE;
+  }
+</style>
+
 
 <div class="main-panel">
   <div class="content-wrapper">
@@ -34,9 +85,9 @@ include '../includes/nav1.php';
             if (mysqli_num_rows($query_run) > 0) {
             ?>
 
-              <table class="table table-hover">
+              <table>
                 <thead>
-                  <tr align="center">
+                  <tr align="center" class="">
                     <br>
                     <th>NAME</th>
                     <th>EMAIL</th>
@@ -45,6 +96,7 @@ include '../includes/nav1.php';
                     <th>TIME</th>
                     <th>N.O.P</th>
                     <th>MESSAGE</th>
+                    <th>CONFIRM RESERVATION</th>
                     <th>CANCEL RESERVATION</th>
                     <th>EDIT</th>
                     <th>DELETE</th></br>
@@ -55,7 +107,6 @@ include '../includes/nav1.php';
 
 
                 while ($row = mysqli_fetch_assoc($query_run)) {
-
                 ?>
 
                   <tbody>
@@ -67,6 +118,14 @@ include '../includes/nav1.php';
                       <td><?php echo $row['rTime'] ?></td>
                       <td><?php echo $row['rNoOfPeople'] ?></td>
                       <td><?php echo $row['rMessage'] ?></td>
+                      <td align="center">
+                        <form action="code.php" method="post">
+                          <div class="template-demo">
+                            <input type="hidden" name="confirm_ID" value="<?php echo $row['rID']; ?>">
+                            <button type="submit" class="btn btn-success " name="confirmbtn"><i class="icon-envelope"></i></button>
+                          </div>
+                        </form>
+                      </td>
                       <td align="center">
                         <form action="code.php" method="post">
                           <div class="template-demo">
@@ -85,12 +144,8 @@ include '../includes/nav1.php';
                       </td>
 
                       <td align="center">
-                        <form action="code.php" method="post">
-                          <div class="template-demo">
-                            <input type="hidden" name="delete_id" value="<?php echo $row['rID']; ?>">
-                            <button type="submit" class="btn btn-danger " name="deletebtn"><i class="icon-trash"></i></button>
-                          </div>
-                        </form>
+                        <button type="button" class='delbutton btn btn-danger' id='<?php echo $row['rID']; ?>'>
+                          <i class="icon-trash"></i></button>
                       </td>
                     </tr>
                   <?php
@@ -159,9 +214,6 @@ include '../includes/nav1.php';
                   <input type="text" class="form-control" name="msg" placeholder="Message">
                 </div>
               </div>
-
-
-
               <button type="submit" name="addbtn" class="btn btn-primary mr-2">Submit</button>
               <button type="reset" name="resetbtn" class="btn btn-secondary mr-2">Reset</button>
               <button class="btn btn-light"><a href="reservation.php">Cancel</a></button>
@@ -190,7 +242,6 @@ include '../includes/nav1.php';
 
             foreach ($query_run as $row) {
         ?>
-
 
               <div class="card" align="center">
                 <div class="card-body">
