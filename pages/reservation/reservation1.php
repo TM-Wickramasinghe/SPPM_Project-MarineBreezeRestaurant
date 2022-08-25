@@ -1,9 +1,57 @@
 <?php
 include '../includes/security.php';
 include '../includes/header.php';
-include '../includes/nav.php';
 ?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $(".delbutton").click(function() {
+      //Save the link in a variable called element
+      var element = $(this);
+      //Find the id of the link that was clicked
+      var del_id = element.attr("id");
+      //Built a url to send
+      var info = 'id=' + del_id;
+      if (confirm("Sure you want to delete this reservation? There is NO undo!")) {
+        $.ajax({
+          type: "GET",
+          url: "code.php",
+          data: info,
+          success: function(data) {
+            alert(data);
+          }
+        }).then((Confirmed) => {
+          window.location.reload();
+        });
+      }
+      return false;
+    });
+  });
+</script>
+
+<?php
+include '../includes/nav.php';
+?>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    overflow: scroll;
+    overflow: auto;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #DDD;
+  }
+
+  tr:hover {
+    background-color: #D6EEEE;
+  }
+</style>
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="page-header">
@@ -34,7 +82,7 @@ include '../includes/nav.php';
             if (mysqli_num_rows($query_run) > 0) {
             ?>
 
-              <table class="table table-hover">
+              <table>
                 <thead>
                   <tr align="center">
                     <br>
@@ -45,6 +93,7 @@ include '../includes/nav.php';
                     <th>TIME</th>
                     <th>N.O.P</th>
                     <th>MESSAGE</th>
+                    <th>CONFIRM RESERVATION</th>
                     <th>CANCEL RESERVATION</th>
                     <th>EDIT</th>
                     <th>DELETE</th></br>
@@ -70,6 +119,14 @@ include '../includes/nav.php';
                       <td align="center">
                         <form action="code.php" method="post">
                           <div class="template-demo">
+                            <input type="hidden" name="confirm_ID1" value="<?php echo $row['rID']; ?>">
+                            <button type="submit" class="btn btn-success " name="confirmbtn1"><i class="icon-envelope"></i></button>
+                          </div>
+                        </form>
+                      </td>
+                      <td align="center">
+                        <form action="code.php" method="post">
+                          <div class="template-demo">
                             <input type="hidden" name="cancel_ID1" value="<?php echo $row['rID']; ?>">
                             <button type="submit" class="btn btn-dark" name="cancelbtn1"><i class="icon-envelope"></i></button>
                           </div>
@@ -83,14 +140,9 @@ include '../includes/nav.php';
                           </div>
                         </form>
                       </td>
-
                       <td align="center">
-                        <form action="code.php" method="post">
-                          <div class="template-demo">
-                            <input type="hidden" name="delete_id1" value="<?php echo $row['rID']; ?>">
-                            <button type="submit" class="btn btn-danger " name="deletebtn1"><i class="icon-trash"></i></button>
-                          </div>
-                        </form>
+                        <button type="button" class='delbutton btn btn-danger' id='<?php echo $row['rID']; ?>'>
+                          <i class="icon-trash"></i></button>
                       </td>
                     </tr>
                   <?php
