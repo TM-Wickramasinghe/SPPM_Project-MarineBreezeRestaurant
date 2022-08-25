@@ -1,5 +1,35 @@
 <?php
 include '../includes/security.php';
+?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $(".delbutton").click(function() {
+            //Save the link in a variable called element
+            var element = $(this);
+            //Find the id of the link that was clicked
+            var del_id = element.attr("id");
+            //Built a url to send
+            var info = 'id=' + del_id;
+            if (confirm("Sure you want to delete this reservation? There is NO undo!")) {
+                $.ajax({
+                    type: "GET",
+                    url: "code.php",
+                    data: info,
+                    success: function(data) {
+                        alert(data);
+                    }
+                }).then((Confirmed) => {
+                    window.location.reload();
+                });
+            }
+            return false;
+        });
+    });
+</script>
+
+<?php
 include '../includes/header.php';
 include '../includes/nav1.php';
 ?>
@@ -60,12 +90,8 @@ include '../includes/nav1.php';
                                                 <td><?php echo $row['fComment']; ?></td>
 
                                                 <td align="center">
-                                                    <form action="codefeedback.php" method="post">
-                                                        <div class="template-demo">
-                                                            <input type="hidden" name="delete_fID" value="<?php echo $row['fID']; ?>">
-                                                            <button type="submit" class="btn btn-danger " name="deletebtn"><i class="icon-trash"></i></button>
-                                                        </div>
-                                                    </form>
+                                                    <button type="button" class='delbutton btn btn-danger' id='<?php echo $row['fID']; ?>'>
+                                                        <i class="icon-trash"></i></button>
                                                 </td>
 
                                             </tr>
