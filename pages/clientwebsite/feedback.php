@@ -212,6 +212,10 @@
 		</div>
 	</section>
 	<!-- End Contact Section -->
+	
+	<!-- AI CHATBOT -->
+	<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+	<df-messenger intent="WELCOME" chat-title="Mr.Bot" agent-id="8daef6bb-751e-4dd2-a504-c6754ba7b3cb" language-code="en"></df-messenger>
 
 	</main>
 	<!-- End #main -->
