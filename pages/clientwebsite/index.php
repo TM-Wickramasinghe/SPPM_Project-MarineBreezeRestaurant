@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -37,26 +38,26 @@
 	<!-- Template Main CSS File -->
 	<link href="assets/css/style.css" rel="stylesheet">
 	<?php
-	include( 'config.php' );
+	include('config.php');
 
-	if ( isset( $_POST[ 'submit1' ] ) ) {
+	if (isset($_POST['submit1'])) {
 
-		$rName = $_POST[ "name" ];
-		$rEmail = $_POST[ "email" ];
-		$rContactNumber = $_POST[ "contactNumber" ];
-		$rDate = $_POST[ "date" ];
-		$rTime = $_POST[ "time" ];
-		$rNoOfPeople = $_POST[ "noOfPeople" ];
-		$rMessage = $_POST[ "message" ];
+		$rName = $_POST["name"];
+		$rEmail = $_POST["email"];
+		$rContactNumber = $_POST["contactNumber"];
+		$rDate = $_POST["date"];
+		$rTime = $_POST["time"];
+		$rNoOfPeople = $_POST["noOfPeople"];
+		$rMessage = $_POST["message"];
 
 
 		$sql = "INSERT INTO `reservation` (`rID`,`rName`, `rEmail`, `rContactNumber`, `rDate`, `rTime`, `rNoOfPeople`, `rMessage`) VALUES (NULL,'$rName', '$rEmail', '$rContactNumber', '$rDate', '$rTime', '$rNoOfPeople', '$rMessage');";
 
 
 
-		$result = mysqli_query( $con, $sql );
+		$result = mysqli_query($con, $sql);
 
-		header( "Location: index.php?booking=1" );
+		header("Location: index.php?booking=1");
 		//header( "Location: http://".$_SERVER["localhost"]."/index.php",true,303);
 		//http://localhost/SPPM_Project-MarineBreezeRestaurant-main/pages/clientwebsite/index.php?booking=1
 	}
@@ -66,22 +67,21 @@
 </head>
 
 <body>
+
 	<?php
 
-	if ( isset( $_GET[ 'booking' ] ) ) {
+	if (isset($_GET['booking'])) {
 		//echo "<script>alert('Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!');
 		//		</script>";
 		echo '<script>Swal.fire({
             title: "Your booking request was Successfully sent!",
             text: "We will call back or send an Email to confirm your reservation.",
-			imageUrl: "../../images/logo.jpeg",
+			imageUrl: "Logo.jpeg",
   imageWidth: 400,
   imageHeight: 200,
   imageAlt: "Custom image",
  
         }); </script>';
-
-
 	}
 	?>
 	<!-- ======= Top Bar ======= -->
@@ -110,7 +110,7 @@
 			<a href="index.php">
 				<h1 class="index.php">Marine Breeze</h1>
 			</a>
-		
+
 
 
 			<!-- Uncomment below if you prefer to use an image logo -->
@@ -255,71 +255,71 @@
 				</div>
 				<div class="row menu-container" data-aos="fade-up" data-aos-delay="200" style="margin-left: 150px">
 					<?php
-					include( 'config.php' );
+					include('config.php');
 					$sqlY = "SELECT * FROM `menu`";
-					$resultX = mysqli_query( $con, $sqlY );
-					if ( mysqli_num_rows( $resultX ) > 0 ) {
-						while ( $row = mysqli_fetch_assoc( $resultX ) ) {
-							?>
-					<div class="col-lg-12 menu-item filter-<?php echo $row['Category']; ?>">
-						<div clas="row col-lg-12">
-							<div class="col-lg-3">
-								<!---<img src="<?php echo $row['Picture']; ?>" class="menu-img" alt="">----->
-								<img src="../product/upload/<?php echo $row['Picture']; ?>" alt="Product Images" class="menu-img">
-							</div>
-							<div class="col-lg-9">
-								<div class="row">
-									<div class="col-lg-6">
-										<?php echo $row['Name']; ?>
+					$resultX = mysqli_query($con, $sqlY);
+					if (mysqli_num_rows($resultX) > 0) {
+						while ($row = mysqli_fetch_assoc($resultX)) {
+					?>
+							<div class="col-lg-12 menu-item filter-<?php echo $row['Category']; ?>">
+								<div clas="row col-lg-12">
+									<div class="col-lg-3">
+										<!---<img src="<?php echo $row['Picture']; ?>" class="menu-img" alt="">----->
+										<img src="upload/<?php echo $row['Picture']; ?>" alt="Product Images" class="menu-img">
 									</div>
-									<div class="col-lg-2">
-										<?php
-										if ( $row[ 'PriceSmall' ] == 'N/A' ) {
-											echo( '' );
-										} else {
-											echo( 'S : Rs.' . $row[ 'PriceSmall' ] . ' /-' );
-										}
-										?>
+									<div class="col-lg-9">
+										<div class="row">
+											<div class="col-lg-6">
+												<?php echo $row['Name']; ?>
+											</div>
+											<div class="col-lg-2">
+												<?php
+												if ($row['PriceSmall'] == 'N/A') {
+													echo ('');
+												} else {
+													echo ('S : Rs.' . $row['PriceSmall'] . ' /-');
+												}
+												?>
 
-									</div>
-									<div class="col-lg-2">
-										<?php
-										if ( $row[ 'PriceMedium' ] == 'N/A' ) {
-											echo( '' );
-										} else {
-											echo( 'M : Rs.' . $row[ 'PriceMedium' ] . ' /-' );
-										}
-										?>
+											</div>
+											<div class="col-lg-2">
+												<?php
+												if ($row['PriceMedium'] == 'N/A') {
+													echo ('');
+												} else {
+													echo ('M : Rs.' . $row['PriceMedium'] . ' /-');
+												}
+												?>
 
-									</div>
-									<div class="col-lg-2">
-										<?php
-										if ( $row[ 'PriceLarge' ] == 'N/A' ) {
-											echo( '' );
-										} else {
-											echo( 'L : Rs.' . $row[ 'PriceLarge' ] . ' /-' );
-										}
-										?>
-									</div>
-									<div class="col-lg-10">
-										<?php echo $row['Description']; ?>
-									</div>
-									<?php
-									if ( $row[ 'Availability' ] == 'Available' ) {
-										echo( '<div class="col-lg-2" style="color: aquamarine">' . $row[ 'Availability' ] . '
-										</div>' );
-									} else {
-										echo( '<div class="col-lg-2" style="color: red">' . $row[ 'Availability' ] . '
-										</div>' );
-									}
-									?>
+											</div>
+											<div class="col-lg-2">
+												<?php
+												if ($row['PriceLarge'] == 'N/A') {
+													echo ('');
+												} else {
+													echo ('L : Rs.' . $row['PriceLarge'] . ' /-');
+												}
+												?>
+											</div>
+											<div class="col-lg-10">
+												<?php echo $row['Description']; ?>
+											</div>
+											<?php
+											if ($row['Availability'] == 'Available') {
+												echo ('<div class="col-lg-2" style="color: aquamarine">' . $row['Availability'] . '
+										</div>');
+											} else {
+												echo ('<div class="col-lg-2" style="color: red">' . $row['Availability'] . '
+										</div>');
+											}
+											?>
 
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
 					<?php
-					}
+						}
 					}
 					//mysqli_close( $con );
 					?>
@@ -539,27 +539,27 @@
 				<form name="form1" method="post" class="php-email-form" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-lg-4 col-md-6 form-group">
-							<input type="text" name="name" id="name1" class="form-control bg-light text-dark placeholder-wave " placeholder="Your Name"/>
+							<input type="text" name="name" id="name1" class="form-control bg-light text-dark placeholder-wave " placeholder="Your Name" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-							<input type="email" id="email1" class="form-control bg-light text-dark placeholder-wave" name="email" placeholder="Your Email"/>
+							<input type="email" id="email1" class="form-control bg-light text-dark placeholder-wave" name="email" placeholder="Your Email" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-							<input type="text" id="contactNumber1" class="form-control bg-light text-dark placeholder-wave" name="contactNumber" placeholder="Your Contact Number"/>
+							<input type="text" id="contactNumber1" class="form-control bg-light text-dark placeholder-wave" name="contactNumber" placeholder="Ex: 0711234567" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3">
-							<input type="date" name="date" id="date1" class="form-control bg-light text-dark placeholder-wave datepicker" placeholder="Date" required/>
+							<input type="date" name="date" id="date1" class="form-control bg-light text-dark placeholder-wave datepicker" placeholder="Date" required />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3">
-							<input type="time" id="time1" class="form-control bg-light text-dark accordion-bodypl aceholder-wave" name="time" placeholder="Time"/>
+							<input type="time" id="time1" class="form-control bg-light text-dark accordion-bodypl aceholder-wave" name="time" placeholder="Time" />
 
 						</div>
 						<div class="col-lg-4 col-md-6 form-group mt-3">
-							<input type="number" id="noOfPeople1" class="form-control bg-light text-dark placeholder-wave" name="noOfPeople" placeholder="No of people"/>
+							<input type="number" id="noOfPeople1" class="form-control bg-light text-dark placeholder-wave" name="noOfPeople" placeholder="No of people" />
 
 						</div>
 					</div>
@@ -568,39 +568,39 @@
 
 					</div>
 
-					<div class="text-center"><input type="submit" name="submit1" class="btn btn-primary mr-2" value="Book a Table" style="background-color: #A38212" onClick="validateAll() "/>
+					<div class="text-center"><input type="submit" name="submit1" class="btn btn-primary mr-2" value="Book a Table" style="background-color: #A38212" onClick="validateAll() " />
 					</div>
 
 				</form>
 
 			</div>
 		</section>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 		<script>
-			$( document ).ready( function () {
+			$(document).ready(function() {
 				var dtToday = new Date();
 				var month = dtToday.getMonth() + 1;
 				var day = dtToday.getDate();
 				var year = dtToday.getFullYear();
 
-				if ( month < 10 )
+				if (month < 10)
 					month = '0' + month.toString();
-				if ( day < 10 )
+				if (day < 10)
 					day = '0' + month.toString();
 
 				var maxDate = year + '-' + month + '-' + day;
-				$( '#date1' ).attr( 'min', maxDate );
+				$('#date1').attr('min', maxDate);
 
-			} )
+			})
 		</script>
 
 
 		<script type="text/javascript">
 			function validateName() {
-				var nameX = document.getElementById( "name1" ).value;
+				var nameX = document.getElementById("name1").value;
 
-				if ( !isNaN( nameX ) || nameX.length < 3 || nameX == '' ) {
-					Swal.fire( 'Please enter a valid name' );
+				if (!isNaN(nameX) || nameX.length < 3 || nameX == "" || nameX == null) {
+					Swal.fire('Please enter a valid name');
 
 
 					return false;
@@ -610,12 +610,12 @@
 			}
 
 			function validateEmail() {
-				var emailX = document.getElementById( "email1" ).value;
+				var emailX = document.getElementById("email1").value;
 				var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-				var exEmail1 = emailX.split( '@' )[ 0 ];
-				var exEmail2 = emailX.split( '@' )[ 1 ];
-				if ( emailX.length < 10 || !emailX.match( validRegex ) || emailX == '' || exEmail2.length < 8 || exEmail1.length < 3 ) {
-					Swal.fire( 'Please enter a valid email address' );
+				var exEmail1 = emailX.split('@')[0];
+				var exEmail2 = emailX.split('@')[1];
+				if (emailX.length < 10 || !emailX.match(validRegex) || emailX == '' || exEmail2.length < 8 || exEmail1.length < 3) {
+					Swal.fire('Please enter a valid email address');
 					return false;
 				} else {
 					return true;
@@ -623,26 +623,26 @@
 			}
 
 			function validateContactNumber() {
-				var conX = document.getElementById( "contactNumber1" ).value;
+				var conX = document.getElementById("contactNumber1").value;
 
-				if ( conX.length < 10 || isNaN( conX ) || conX == '' ) {
-					Swal.fire( 'Please enter a valid contact number' );
+				if (conX.length < 10 || (conX.charAt("0") != 0) || conX.length > 10) {
+					Swal.fire('Please enter a valid contact number');
 					return false;
 				} else {
 					return true;
 				}
 			}
 
-			function validateTime( time ) {
-				var timeX = document.getElementById( "time1" ).value;
-				if ( timeX == "" || timeX.indexOf( ":" ) < 0 ) {
-					Swal.fire( 'Invalid time entry' );
+			function validateTime(time) {
+				var timeX = document.getElementById("time1").value;
+				if (timeX == "" || timeX.indexOf(":") < 0) {
+					Swal.fire('Invalid time entry');
 					return false;
 				} else {
-					var sHours = timeX.split( ':' )[ 0 ];
-					var sMinutes = timeX.split( ':' )[ 1 ];
-					if ( parseInt( sHours ) < 8 || parseInt( sHours ) > 22 ) {
-						Swal.fire( 'We are only open between 8am to  10pm' );
+					var sHours = timeX.split(':')[0];
+					var sMinutes = timeX.split(':')[1];
+					if (parseInt(sHours) < 8 || parseInt(sHours) > 22) {
+						Swal.fire('We are only open between 8am to  10pm');
 						return false;
 					} else {
 						return true;
@@ -652,13 +652,13 @@
 			}
 
 			function validateDate() {
-				var dateX = document.getElementById( "date1" ).value;
-				var sMonth = dateX.split( '/' )[ 0 ];
-				var sday = dateX.split( '/' )[ 1 ];
-				var sYear = dateX.split( '/' )[ 2 ];
+				var dateX = document.getElementById("date1").value;
+				var sMonth = dateX.split('/')[0];
+				var sday = dateX.split('/')[1];
+				var sYear = dateX.split('/')[2];
 
-				if ( sYear == "yyyy" || sday == "dd" || sMonth == "mm" ) {
-					Swal.fire( 'Please enter a valid date' );
+				if (sYear == "yyyy" || sday == "dd" || sMonth == "mm") {
+					Swal.fire('Please enter a valid date');
 					return false;
 				} else {
 					return true;
@@ -667,9 +667,9 @@
 			}
 
 			function validateNofpeople() {
-				var pax = document.getElementById( "noOfPeople1" ).value;
-				if ( parseInt( pax ) <= 0 || pax == '' ) {
-					Swal.fire( 'Please enter a valid number of people' );
+				var pax = document.getElementById("noOfPeople1").value;
+				if (parseInt(pax) <= 0 || pax == '') {
+					Swal.fire('Please enter a valid number of people');
 					return false;
 				} else {
 					return true;
@@ -678,7 +678,8 @@
 			}
 
 			function validateAll() {
-				if ( validateName() && validateEmail() && validateContactNumber() && validateTime() && validateDate() && validateNofpeople() ) {
+				if (validateName() && validateEmail() && validateContactNumber() && validateTime() && validateDate() && validateNofpeople()) {
+
 					return true;
 				} else {
 					return false;
@@ -699,32 +700,32 @@
 					<div class="swiper-wrapper">
 
 						<?php
-						include( 'config.php' );
+						include('config.php');
 						$sql2 = "SELECT * FROM `feedback`";
-						$result2 = mysqli_query( $con, $sql2 );
-						if ( mysqli_num_rows( $result2 ) > 0 ) {
-							while ( $row = mysqli_fetch_assoc( $result2 ) ) {
-								?>
+						$result2 = mysqli_query($con, $sql2);
+						if (mysqli_num_rows($result2) > 0) {
+							while ($row = mysqli_fetch_assoc($result2)) {
+						?>
 
-						<div class="swiper-slide">
-							<div class="testimonial-item">
-								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-									<?php echo $row['fComment']; ?>
-									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-								<h3>
-									<?php echo $row['fName']; ?>
-								</h3>
-								<div class="swiper-pagination"></div>
-							</div>
-						</div>
-						<!-- End testimonial item -->
+								<div class="swiper-slide">
+									<div class="testimonial-item">
+										<p>
+											<i class="bx bxs-quote-alt-left quote-icon-left"></i>
+											<?php echo $row['fComment']; ?>
+											<i class="bx bxs-quote-alt-right quote-icon-right"></i>
+										</p>
+										<h3>
+											<?php echo $row['fName']; ?>
+										</h3>
+										<div class="swiper-pagination"></div>
+									</div>
+								</div>
+								<!-- End testimonial item -->
 
 
 
 						<?php
-						}
+							}
 						}
 						//mysqli_close( $con );
 						?>
@@ -756,7 +757,7 @@
 							<a href="assets/img/gallery/gallery-1.jpg" class="gallery-lightbox" data-gall="gallery-item">
 								<img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
 							</a>
-						
+
 
 
 
@@ -770,7 +771,7 @@
 							<a href="assets/img/gallery/gallery-2.jpg" class="gallery-lightbox" data-gall="gallery-item">
 								<img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
 							</a>
-						
+
 
 
 
@@ -784,7 +785,7 @@
 							<a href="assets/img/gallery/gallery-3.jpg" class="gallery-lightbox" data-gall="gallery-item">
 								<img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
 							</a>
-						
+
 
 
 
@@ -798,7 +799,7 @@
 							<a href="assets/img/gallery/gallery-4.jpg" class="gallery-lightbox" data-gall="gallery-item">
 								<img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
 							</a>
-						
+
 
 
 
@@ -812,7 +813,7 @@
 							<a href="assets/img/gallery/gallery-5.jpg" class="gallery-lightbox" data-gall="gallery-item">
 								<img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
 							</a>
-						
+
 
 
 
@@ -826,7 +827,7 @@
 							<a href="assets/img/gallery/gallery-6.jpg" class="gallery-lightbox" data-gall="gallery-item">
 								<img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
 							</a>
-						
+
 
 
 
@@ -840,7 +841,7 @@
 							<a href="assets/img/gallery/gallery-7.jpg" class="gallery-lightbox" data-gall="gallery-item">
 								<img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
 							</a>
-						
+
 
 
 
@@ -854,7 +855,7 @@
 							<a href="assets/img/gallery/gallery-8.jpg" class="gallery-lightbox" data-gall="gallery-item">
 								<img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
 							</a>
-						
+
 
 
 
@@ -975,11 +976,7 @@
 			</div>
 		</section>
 		<!-- End Contact Section -->
-		
-                    <!-- AI CHATBOT -->
-		<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-		<df-messenger intent="WELCOME" chat-title="Mr.Bot" agent-id="8daef6bb-751e-4dd2-a504-c6754ba7b3cb" language-code="en"></df-messenger>
-		
+
 	</main>
 	<!-- End #main -->
 
@@ -1001,7 +998,6 @@
 	<!-- End Footer -->
 
 	<div id="preloader"></div>
-	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 	<!-- Vendor JS Files -->
 	<script src="assets/vendor/aos/aos.js"></script>
@@ -1015,7 +1011,9 @@
 	<script src="assets/js/main.js"></script>
 
 </body>
-
+<!-- AI CHATBOT -->
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger intent="WELCOME" chat-title="Mr.Bot" agent-id="8daef6bb-751e-4dd2-a504-c6754ba7b3cb" language-code="en"></df-messenger>
 <?php
 include '../includes/script.php';
 ?>
