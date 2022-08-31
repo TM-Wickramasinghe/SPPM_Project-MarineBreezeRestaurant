@@ -1,6 +1,7 @@
 <?php
 include '../includes/security.php';
 
+//login
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
@@ -33,9 +34,13 @@ if (isset($_POST['login'])) {
                     $_SESSION['status_code'] = "success";
                     header('Location: ../product/items.php');
                 }
+            }else{
+                $_SESSION['status'] = "Invalid Username Or Password";
+                $_SESSION['status_code'] = "error";
+                header('Location: login.php');
             }
         } else {
-            $_SESSION['status'] = "Invalid Username Or Password";
+            $_SESSION['status'] = "Something went wrong.#1";
             $_SESSION['status_code'] = "error";
             header('Location: login.php');
         }
@@ -90,7 +95,7 @@ if (isset($_POST["forget"])) {
             <h3>Hello Admin,</h3>
             <h4>You are receiving this email because we received a password rese request for your account.</h4>
             <h5>Click here:</h5>
-            <a href='http://localhost/SPPM_Project-MarineBreezeRestaurant-main/SPPM_Project-MarineBreezeRestaurant-main/pages/login/RESETpw.php?token=$token&aEmail=$get_email'>Link<a/>
+            <a href='http://localhost/SPPM_Project-MarineBreezeRestaurant-main/SPPM_Project-MarineBreezeRestaurant-main/pages/login/resetpw.php?token=$token&aEmail=$get_email'>Link<a/>
             ";
 
             $mail->Body    = $email_template;
