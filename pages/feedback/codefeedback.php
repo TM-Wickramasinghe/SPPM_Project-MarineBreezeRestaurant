@@ -1,13 +1,5 @@
 <?php
 include '../includes/security.php';
-?>
-
-<script>
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
-</script>
-<?php
 
 //delete feedback
 if ($_GET['id']) {
