@@ -2,7 +2,7 @@
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<title>Marine Breeze</title>
+	<title>MB - Feedback</title>
 	<meta content="" name="description">
 	<meta content="" name="keywords">
 
@@ -13,8 +13,8 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<script src="jquery-3.3.1.min.js"></script>
-	
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<link rel="stylesheet" href="@sweetalert2/theme-dark/dark.css">
 	<!-- Vendor CSS Files -->
@@ -42,18 +42,18 @@
 
 
 		$result = mysqli_query($con, $sql);
-		
+
 		header("Location: feedback.php?feed=1");
 	}
 
 	?>
-	
-	
+
+
 
 </head>
 
 <body>
-<?php
+	<?php
 
 	if (isset($_GET['feed'])) {
 		//echo "<script>alert('Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!');
@@ -66,8 +66,6 @@
             timer: 5000
         })
 				</script>";';
-		
-		
 	}
 	?>
 	<!-- ======= Top Bar ======= -->
@@ -145,7 +143,7 @@
 					</div>
 				</div>
 				<div class="form-group mt-3">
-					<textarea class="form-control" name="feedback" rows="7" placeholder="Feedback"></textarea>
+					<textarea class="form-control" name="feedback" rows="7" placeholder="Feedback" required></textarea>
 
 				</div>
 
@@ -212,10 +210,6 @@
 		</div>
 	</section>
 	<!-- End Contact Section -->
-	
-	<!-- AI CHATBOT -->
-	<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-	<df-messenger intent="WELCOME" chat-title="Mr.Bot" agent-id="8daef6bb-751e-4dd2-a504-c6754ba7b3cb" language-code="en"></df-messenger>
 
 	</main>
 	<!-- End #main -->
@@ -250,5 +244,7 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
-
+	<!-- AI CHATBOT -->
+	<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+	<df-messenger intent="WELCOME" chat-title="Mr.Bot" agent-id="8daef6bb-751e-4dd2-a504-c6754ba7b3cb" language-code="en"></df-messenger>
 </body>
