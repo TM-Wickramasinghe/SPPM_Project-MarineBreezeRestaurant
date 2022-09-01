@@ -16,11 +16,7 @@ Risk Manager      - Dilakshi Fernando (2135280)
 Scheduling Manger - Katukurundage Sirimanne (2136426)
 
 
-MarineBreezeRestaurant Customer Website Link:
-
-http://marinebreezerestaurant.epizy.com/index.php?i=1
+MarineBreezeRestaurant Customer Website Link: http://marinebreezerestaurant.epizy.com/index.php?i=1
 
 
-MarineBreezeRestaurant Admin Website Link:
-
-http://marinebreezeadminmain.epizy.com/index.php?i=1
+MarineBreezeRestaurant Admin Website Link: http://marinebreezeadminmain.epizy.com/index.php?i=1
